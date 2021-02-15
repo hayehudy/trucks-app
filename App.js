@@ -5,7 +5,7 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text style={{size:20}}>trucks-app!!!</Text>
+      <Text style={{fontSize:40, color:"green"}}>trucks-app!!!</Text>
       <StatusBar style="auto" />
     </View>
   );
