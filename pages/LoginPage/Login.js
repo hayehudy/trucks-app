@@ -1,5 +1,5 @@
 import React from "react";
-import logInStyles from "./LoginStyles";
+import logInStyles from "./LogInStyles";
 
 const LogInPage = () => {
   return <></>;

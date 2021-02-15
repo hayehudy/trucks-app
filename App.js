@@ -1,7 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import LogInPage from "./pages/LoginPage/Login";
+import LogInPage from "./pages/LogInPage/LogIn";
 import StartPage from "./pages/StartPage/Start";
 import DetailsPage from "./pages/DetailsPage/Details";
 import WorksPage from "./pages/WorksPage/Works";
