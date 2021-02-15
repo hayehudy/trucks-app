@@ -10,7 +10,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text style={{ fontSize: 40, color: "green" }}>
-        trucks-app!!! נראה שאני מצליח
+        trucks-app!!! כל הכבוד
       </Text>
       <StatusBar style="auto" />
     </View>
