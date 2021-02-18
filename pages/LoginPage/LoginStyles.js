@@ -2,13 +2,13 @@ import { StyleSheet } from "react-native";
 
 const logInStyles = StyleSheet.create({
   container: {
-    marginTop: 80,
-    backgroundColor: "#fff",
+    backgroundColor: "#E6E6FA",
     alignItems: "center",
     height: "100%",
   },
 
   image: {
+    marginTop: 100,
     width: 300,
     height: 100,
     marginBottom: 40,
@@ -21,6 +21,9 @@ const logInStyles = StyleSheet.create({
     height: 55,
     marginBottom: 20,
     alignItems: "center",
+    borderColor: "black",
+    borderWidth: 2,
+    elevation: 30,
   },
 
   TextInput: {

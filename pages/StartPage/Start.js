@@ -82,9 +82,12 @@ const StartPage = ({ navigation }) => {
             }:${
               minutes < 10 ? "0" + minutes : minutes
             }:${new Date().getSeconds()}
-              `);
+            `);
             setTextLocation(textlocation);
             setMap(mapview);
+            setTimeout(() => {
+              navigation.navigate("DetailsPage");
+            }, 5000);
           }}
         >
           <Text style={StartStyles.loginText} fontSize={30}>

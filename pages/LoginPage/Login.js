@@ -1,13 +1,5 @@
 import React, { useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  TextInput,
-  Button,
-  TouchableOpacity,
-} from "react-native";
+import { Text, View, Image, TextInput, TouchableOpacity } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import LogInStyles from "./LoginStyles";
 import HeadBar from "../../component/HeadBar";
@@ -18,7 +10,7 @@ const LogInPage = ({ navigation }) => {
 
   return (
     <View style={{ marginTop: StatusBar.currentHieght || 30 }}>
-      <HeadBar navigation={navigation} />
+      {/* <HeadBar navigation={navigation} /> */}
 
       <View style={LogInStyles.container}>
         <Image style={LogInStyles.image} source={require("./logo.png")} />
@@ -45,8 +37,7 @@ const LogInPage = ({ navigation }) => {
         <TouchableOpacity
           style={LogInStyles.loginBtn}
           onPress={() => {
-            // navigation.navigate("WorksPage", details);
-            alert("You tapped the button!");
+            navigation.navigate("StartPage");
           }}
         >
           <Text style={LogInStyles.loginText} fontSize={30}>
