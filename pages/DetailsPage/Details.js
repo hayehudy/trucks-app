@@ -4,9 +4,11 @@ import { StatusBar } from 'expo-status-bar';
 import DetailsStyles from "./DetailsStyles";
 import HeadBar from "../../component/HeadBar";
 import {Picker} from '@react-native-picker/picker';
-import DetailsPicker from "../../component/DetailsPicker"
+import DetailsPicker from "../../component/DetailsPicker";
+import { useRoute } from "@react-navigation/native";
 
 const DetailsPage = ({navigation}) => {
+    const route = useRoute();
     const [value,setValue]=useState()
     const [details,setDetails]=useState({});
     const options={ TrucksTypes:["Citroen", "Fiat", "Ferrari", "Dodge"],
@@ -23,16 +25,15 @@ const DetailsPage = ({navigation}) => {
         setDetails({...details, ...obj})}
     
     const onPress=()=>{
-        navigation.navigate("WorksPage")
+        navigation.navigate("WorksPage",details)
     }
 
     return (
       <>
+      {console.log (details)}
         <View style={{marginTop: StatusBar.currentHieght || 30}}>           
             <HeadBar navigation={navigation}/>
             <Text>DETAILS</Text>
-            {console.log("theDetailsObject:")}
-            {console.log(details)}
             <Text style={{marginTop:10, color:"red"}}>TruckNumber</Text>
             <TextInput
                 style={{width:50, height: 40, borderColor: 'gray', borderWidth: 1 }}
