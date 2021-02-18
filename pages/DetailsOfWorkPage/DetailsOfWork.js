@@ -23,7 +23,7 @@ const DetailsOfWork = ({works,setWorks,setShow}) => {
 
     return (
       <>
-      {console.log (theDetails)}
+      {/* {console.log (theDetails)} */}
         <View style={{
           alignSelf:"center",
           backgroundColor: "#263742",
@@ -42,7 +42,7 @@ const DetailsOfWork = ({works,setWorks,setShow}) => {
             />
             <Text style={{marginLeft:40,color:"red",marginTop:20}}>Product</Text>
             <Picker
-                selectedValue={theDetails.product}
+                selectedValue={theDetails.Product}
                 style={{marginLeft:40,width: 200,  height: 50,color:"white"}}
                 onValueChange={(itemValue, itemIndex) =>
                         {const detailsObj={};
