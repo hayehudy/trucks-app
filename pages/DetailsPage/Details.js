@@ -43,10 +43,11 @@ const DetailsPage = ({ navigation }) => {
       {console.log(details)}
       <View style={{ marginTop: StatusBar.currentHieght || 30 }}>
         <HeadBar navigation={navigation} />
-        <Text>DETAILS</Text>
-        <Text style={{ marginTop: 10, color: "red" }}>TruckNumber</Text>
+        <View style={{alignItems:"center"}}>
+        {/* <Text>DETAILS</Text> */}
+        <Text style={{ marginTop: 10, color:"#003300" }}>TruckNumber</Text>
         <TextInput
-          style={{ width: 50, height: 40, borderColor: "gray", borderWidth: 1 }}
+          style={{ width:250,height: 40, borderColor: "gray", borderWidth: 1 }}
           onChangeText={(text) => onChangeText(text)}
           value={value}
         />
@@ -92,9 +93,10 @@ const DetailsPage = ({ navigation }) => {
           details={details}
           setDetails={setDetails}
         />
-        <TouchableOpacity onPress={onPress}>
+        <TouchableOpacity style={{alignItems:"center", marginTop: 40,backgroundColor: "#00ff00",borderRadius: 20, padding: 10, elevation: 2,width:200}} onPress={onPress}>
           <Text style={{ color: "green" }}>Continue</Text>
         </TouchableOpacity>
+      </View>
       </View>
     </>
   );
