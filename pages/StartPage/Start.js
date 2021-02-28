@@ -45,6 +45,7 @@ const StartPage = ({ navigation }) => {
     var latitude = location.coords.latitude;
     var longitude = location.coords.longitude;
   }
+
   const mapview = (
     <MapView
       style={{ height: 150, width: 300 }}
