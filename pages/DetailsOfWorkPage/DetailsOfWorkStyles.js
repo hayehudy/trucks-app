@@ -6,7 +6,7 @@ const DetailsOfWorkStyles = StyleSheet.create({
     alignSelf: "center",
     backgroundColor: "grey",
     width: "90%",
-    height: 550,
+    height: "100%",
     position: "relative",
     borderRadius: 50,
     elevation: 200,
@@ -21,7 +21,7 @@ const DetailsOfWorkStyles = StyleSheet.create({
     alignItems: "center",
     borderColor: "black",
     borderWidth: 2,
-    elevation: 8,
+    elevation: 800,
   },
 
   TextInput: {

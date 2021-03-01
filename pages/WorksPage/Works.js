@@ -21,6 +21,7 @@ const WorksPage = ({ route, navigation }) => {
   const [works, setWorks] = useState([]);
   const [currentWork, setCurrentWork] = useState({});
   const details = route.params;
+
   const onPress = () => {
     setShow(true);
   };
@@ -91,17 +92,30 @@ const WorksPage = ({ route, navigation }) => {
         <View style={{ height: "100%" }}>
           {show && (
             <DetailsOfWork
+              style={{
+                height: "100%",
+                alignItems: "center",
+                alignSelf: "center",
+                backgroundColor: "grey",
+                width: "90%",
+                // height: 550,
+                position: "absolute",
+                borderRadius: 50,
+                elevation: 2,
+              }}
               works={works}
               setWorks={setWorks}
               setShow={setShow}
             />
           )}
+
           <View
             style={{
-              height: "70%",
+              // height: 500,
               marginBottom: 20,
               elevation: 1,
-              position: "absolute",
+              flex: 0.8,
+              // position: "absolute",
               // width: "100%",
             }}
           >
