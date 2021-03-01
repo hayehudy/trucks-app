@@ -15,11 +15,12 @@
     "@react-navigation/drawer": "^5.12.3",
     "@react-navigation/native": "^5.9.2",
     "@react-navigation/stack": "^5.14.2",
-    "cd": "^0.3.3",
+    "@unimodules/core": "^7.0.0",
     "expo": "~40.0.0",
+    "expo-camera": "~9.1.0",
     "expo-location": "~10.0.0",
     "expo-status-bar": "~1.0.3",
-    "ios": "^0.0.1",
+    "module": "^1.2.5",
     "native-base": "^2.15.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
@@ -33,7 +34,7 @@
     "react-native-screens": "~2.15.2",
     "react-native-vector-icons": "^8.0.0",
     "react-native-web": "~0.13.12",
-    "undefined": "react-native-picker/picker"
+    "unimodules-permissions-interface": "^6.0.0"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0"

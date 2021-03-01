@@ -73,6 +73,12 @@ export default function App() {
           labelStyle: textDrawer,
         }}
       >
+        <Drawer.Screen
+          name="WorksPage"
+          component={WorksPage}
+          options={{ title: "Works" }}
+        />
+
         {loadlogin && (
           <Drawer.Screen
             name="LoginPage"
@@ -100,11 +106,6 @@ export default function App() {
           name="DetailsPage"
           component={DetailsPage}
           options={{ title: "Details" }}
-        />
-        <Drawer.Screen
-          name="WorksPage"
-          component={WorksPage}
-          options={{ title: "Works" }}
         />
       </Drawer.Navigator>
     </NavigationContainer>
