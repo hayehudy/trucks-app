@@ -111,20 +111,25 @@ const LogInPage = ({ navigation }) => {
                 validation();
               }}
             >
-              <Text style={LogInStyles.loginText}>כניסה</Text>
+              <Text style={LogInStyles.loginText}>Log in</Text>
             </TouchableOpacity>
           </View>
         )}
 
         {messageAccess && (
           <View style={LogInStyles.message}>
-            <Text style={LogInStyles.messagetext}>התחברת בהצלחה</Text>
+            <Text style={LogInStyles.messagetext}>
+              {" "}
+              you have successfully connected
+            </Text>
           </View>
         )}
 
         {messageErr && (
           <View style={LogInStyles.message}>
-            <Text style={LogInStyles.messagetext}>המייל או הסיסמא שגויים</Text>
+            <Text style={LogInStyles.messagetext}>
+              The email or password is incorrect
+            </Text>
             <TouchableOpacity
               style={LogInStyles.loginBtn}
               onPress={() => {
@@ -132,7 +137,7 @@ const LogInPage = ({ navigation }) => {
                 setLogin(true);
               }}
             >
-              <Text style={LogInStyles.loginText}>אישור</Text>
+              <Text style={LogInStyles.loginText}>cancel</Text>
             </TouchableOpacity>
           </View>
         )}

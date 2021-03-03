@@ -43,60 +43,78 @@ const DetailsPage = ({ navigation }) => {
       {console.log(details)}
       <View style={{ marginTop: StatusBar.currentHieght || 30 }}>
         <HeadBar navigation={navigation} />
-        <View style={{alignItems:"center"}}>
-        {/* <Text>DETAILS</Text> */}
-        <Text style={{ marginTop: 10, color:"#003300" }}>TruckNumber</Text>
-        <TextInput
-          style={{ width:250,height: 40, borderColor: "gray", borderWidth: 1 }}
-          onChangeText={(text) => onChangeText(text)}
-          value={value}
-        />
-        <DetailsPicker
-          theOption="TrucksTypes"
-          detail="TruckType"
-          options={options}
-          details={details}
-          setDetails={setDetails}
-        />
-        <DetailsPicker
-          theOption="Contractors"
-          detail="Contractor"
-          options={options}
-          details={details}
-          setDetails={setDetails}
-        />
-        <DetailsPicker
-          theOption="Customers"
-          detail="Customer"
-          options={options}
-          details={details}
-          setDetails={setDetails}
-        />
-        <DetailsPicker
-          theOption="Origins"
-          detail="Origin"
-          options={options}
-          details={details}
-          setDetails={setDetails}
-        />
-        <DetailsPicker
-          theOption="Destinations"
-          detail="Destination"
-          options={options}
-          details={details}
-          setDetails={setDetails}
-        />
-        <DetailsPicker
-          theOption="Cities"
-          detail="City"
-          options={options}
-          details={details}
-          setDetails={setDetails}
-        />
-        <TouchableOpacity style={{alignItems:"center", marginTop: 40,backgroundColor: "#00ff00",borderRadius: 20, padding: 10, elevation: 2,width:200}} onPress={onPress}>
-          <Text style={{ color: "green" }}>Continue</Text>
-        </TouchableOpacity>
-      </View>
+        <View style={{ alignItems: "center" }}>
+          {/* <Text>DETAILS</Text> */}
+          <Text style={{ marginTop: 10, color: "#003300" }}>TruckNumber</Text>
+          <TextInput
+            style={{
+              width: 250,
+              height: 40,
+              borderColor: "gray",
+              borderWidth: 1,
+            }}
+            onChangeText={(text) => onChangeText(text)}
+            value={value}
+          />
+          <DetailsPicker
+            theOption="TrucksTypes"
+            detail="TruckType"
+            options={options}
+            details={details}
+            setDetails={setDetails}
+          />
+          <DetailsPicker
+            theOption="Contractors"
+            detail="Contractor"
+            options={options}
+            details={details}
+            setDetails={setDetails}
+          />
+          <DetailsPicker
+            theOption="Customers"
+            detail="Customer"
+            options={options}
+            details={details}
+            setDetails={setDetails}
+          />
+          <DetailsPicker
+            theOption="Origins"
+            detail="Origin"
+            options={options}
+            details={details}
+            setDetails={setDetails}
+          />
+          <DetailsPicker
+            theOption="Destinations"
+            detail="Destination"
+            options={options}
+            details={details}
+            setDetails={setDetails}
+          />
+          <DetailsPicker
+            theOption="Cities"
+            detail="City"
+            options={options}
+            details={details}
+            setDetails={setDetails}
+          />
+          <TouchableOpacity
+            style={{
+              alignItems: "center",
+              marginTop: 40,
+              backgroundColor: "orange",
+              borderRadius: 20,
+              padding: 10,
+              elevation: 2,
+              width: 200,
+            }}
+            onPress={onPress}
+          >
+            <Text style={{ color: "#000", fontSize: 22, fontWeight: "bold" }}>
+              Continue
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </>
   );

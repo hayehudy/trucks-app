@@ -2,33 +2,76 @@ import { StyleSheet } from "react-native";
 
 const DetailsOfWorkStyles = StyleSheet.create({
   container: {
-    alignItems: "center",
-    alignSelf: "center",
-    backgroundColor: "grey",
-    width: "90%",
     height: "100%",
-    position: "relative",
-    borderRadius: 50,
-    elevation: 200,
   },
 
-  inputView: {
-    backgroundColor: "#E5E5E5",
-    borderRadius: 100,
-    // width: "70%",
-    height: 5,
-    marginBottom: 20,
+  background: {
+    marginTop: 30,
     alignItems: "center",
-    borderColor: "black",
-    borderWidth: 2,
-    elevation: 800,
+    alignSelf: "center",
+    backgroundColor: "#ffa31a",
+    width: "90%",
+    height: 500,
+    borderRadius: 50,
+  },
+
+  headertext: {
+    marginTop: 20,
+    fontSize: 25,
+    color: "#ffffff",
+    fontWeight: "bold",
+  },
+
+  titletext: {
+    marginTop: 15,
+    fontSize: 22,
+    fontWeight: "bold",
   },
 
   TextInput: {
-    alignSelf: "center",
-    height: 50,
-    // elevation: 5,
+    padding: 15,
     fontSize: 20,
+    fontWeight: "bold",
+    marginTop: 10,
+    backgroundColor: "#cccccc",
+    borderRadius: 20,
+    width: "80%",
+    height: 50,
+    borderWidth: 2,
+  },
+
+  picker: {
+    marginTop: 10,
+    borderColor: "#000",
+    backgroundColor: "#cccccc",
+    borderWidth: 2,
+    width: "80%",
+    borderRadius: 20,
+  },
+
+  btnView: {
+    marginTop: 25,
+    flexDirection: "row",
+    padding: 10,
+    height: 80,
+    width: "90%",
+    justifyContent: "space-between",
+  },
+
+  btn: {
+    // marginTop: 25,
+    backgroundColor: "#000",
+    borderRadius: 20,
+    padding: 10,
+    width: "45%",
+    height: 50,
+    alignItems: "center",
+  },
+
+  btntext: {
+    fontSize: 25,
+    color: "#ffffff",
+    fontWeight: "bold",
   },
 });
 

@@ -11,8 +11,10 @@ import LogInPage from "./pages/LoginPage/Login";
 import StartPage from "./pages/StartPage/Start";
 import DetailsPage from "./pages/DetailsPage/Details";
 import WorksPage from "./pages/WorksPage/Works";
+import makeCamera from "./component/MakeCamera";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Icon from "react-native-vector-icons/FontAwesome5";
+import Iconmaterial from "react-native-vector-icons/MaterialCommunityIcons";
 
 export default function App() {
   const Drawer = createDrawerNavigator();
@@ -50,14 +52,28 @@ export default function App() {
           return (
             <DrawerContentScrollView {...props}>
               <DrawerItemList {...props} />
-              <DrawerItem
-                label="Logout"
-                onPress={async () => {
-                  await setloadlogin(true);
-                  clearAsyncStorage();
-                  props.navigation.navigate("LoginPage");
-                }}
-              />
+              <View style={{ marginTop: 100 }}>
+                <DrawerItem
+                  label="Log out"
+                  onPress={async () => {
+                    await setloadlogin(true);
+                    clearAsyncStorage();
+                    props.navigation.navigate("LoginPage");
+                  }}
+                  drawerStyle={{
+                    activeBackgroundColor: "orange",
+                    labelStyle: textDrawer,
+                  }}
+                  icon={() => (
+                    <Iconmaterial name="logout" size={30} color={"red"} />
+                  )}
+                  labelStyle={{
+                    color: "red",
+                    fontWeight: "700",
+                    fontSize: 20,
+                  }}
+                />
+              </View>
             </DrawerContentScrollView>
           );
         }}
@@ -73,12 +89,6 @@ export default function App() {
           labelStyle: textDrawer,
         }}
       >
-        <Drawer.Screen
-          name="WorksPage"
-          component={WorksPage}
-          options={{ title: "Works" }}
-        />
-
         {loadlogin && (
           <Drawer.Screen
             name="LoginPage"
@@ -98,14 +108,38 @@ export default function App() {
           options={{
             title: "Start",
             drawerIcon: ({ focused, size }) => (
-              <Icon name="power-off" size={25} color={"red"} />
+              <Icon name="power-off" size={30} color={"red"} />
             ),
           }}
         />
         <Drawer.Screen
           name="DetailsPage"
           component={DetailsPage}
-          options={{ title: "Details" }}
+          options={{
+            title: "Details",
+            drawerIcon: ({ focused, size }) => (
+              <Iconmaterial name="card-text" size={30} color={"red"} />
+            ),
+          }}
+        />
+        <Drawer.Screen
+          name="WorksPage"
+          component={WorksPage}
+          options={{
+            title: "Works",
+            drawerIcon: ({ focused, size }) => (
+              <Iconmaterial name="text-box-plus" size={30} color={"red"} />
+            ),
+          }}
+        />
+
+        <Drawer.Screen
+          name="makeCamera"
+          component={makeCamera}
+          options={{
+            gestureEnabled: false,
+            drawerLabel: () => null,
+          }}
         />
       </Drawer.Navigator>
     </NavigationContainer>

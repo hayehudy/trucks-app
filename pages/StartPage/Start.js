@@ -5,6 +5,7 @@ import StartStyles from "./StartStyles";
 import HeadBar from "../../component/HeadBar";
 import * as Location from "expo-location";
 import MapView, { Marker } from "react-native-maps";
+import Icon from "react-native-vector-icons/FontAwesome5";
 
 const StartPage = ({ navigation }) => {
   const [startTime, setStartTime] = useState("");
@@ -72,7 +73,7 @@ const StartPage = ({ navigation }) => {
       <HeadBar navigation={navigation} />
       <View style={StartStyles.container}>
         <TouchableOpacity
-          style={StartStyles.loginBtn}
+          style={StartStyles.Btnstart}
           onPress={() => {
             setStartTime(`${days[new Date().getDay()]}     ${
               date < 10 ? "0" + date : date
@@ -91,12 +92,10 @@ const StartPage = ({ navigation }) => {
             }, 5000);
           }}
         >
-          <Text style={StartStyles.loginText} fontSize={30}>
-            Start{"\n"}The{"\n"}Day
-          </Text>
+          <Icon name="power-off" size={200} color={"red"} />
         </TouchableOpacity>
+        <Text style={StartStyles.loginText}>Start The Day</Text>
         <Text>
-          {"\n"}
           {"\n"}
           {startTime} {textLocation}
         </Text>

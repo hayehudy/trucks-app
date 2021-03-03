@@ -6,18 +6,28 @@ import {
   TextInput,
   TouchableOpacity,
   View,
+  Image,
 } from "react-native";
 import DetailsOfWorkStyles from "./DetailsOfWorkStyles";
 import { Picker } from "@react-native-picker/picker";
 import { Camera } from "expo-camera";
-import { Button, Icon } from "native-base";
+import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import MakeCamera from "../../component/MakeCamera";
 
-const DetailsOfWork = ({ works, setWorks, setShow }) => {
+const DetailsOfWork = (props) => {
+  const { navigation } = props;
+  const { works, setWorks, setShow, image } = props;
   const products = ["apple", "banana", "egg"];
   const [theDetails, setTheDetails] = useState({});
   const [value, setValue] = useState();
-  const [startCamera, setStartCamera] = useState(false);
+
+  useEffect(() => {
+    if (image) {
+      const objDetails = {};
+      objDetails.Image = image.uri;
+      setTheDetails({ ...theDetails, ...objDetails });
+    }
+  }, [image]);
 
   const onChangeText = (text) => {
     setValue(text);
@@ -33,93 +43,71 @@ const DetailsOfWork = ({ works, setWorks, setShow }) => {
     setShow(false);
   };
 
+  const __startCamera = async () => {
+    navigation.navigate("makeCamera");
+  };
+
   return (
     <>
       <View style={DetailsOfWorkStyles.container}>
-        <Text style={{ alignSelf: "center", color: "white" }}>
-          DETAILS-OF-WORK
-        </Text>
+        <View style={DetailsOfWorkStyles.background}>
+          <Text style={DetailsOfWorkStyles.headertext}>DETAILS OF WORK</Text>
 
-        <Text style={{ color: "#003300", marginTop: 20, fontSize: 20 }}>
-          Tons or Load
-        </Text>
-        <View
-          style={{
-            // position: "absolute",
-            backgroundColor: "#E5E5E5",
-            borderRadius: 100,
-            width: "70%",
-            height: 50,
-            marginBottom: 20,
-            alignItems: "center",
-            borderColor: "black",
-            borderWidth: 2,
-            elevation: 300,
-          }}
-        >
+          <Text style={DetailsOfWorkStyles.titletext}>Tons or Load</Text>
+
           <TextInput
-            // style={{
-            //   position: "absolute",
-            //   backgroundColor: "#E5E5E5",
-            //   borderRadius: 100,
-            //   // width: "70%",
-            //   height: 5,
-            //   marginBottom: 20,
-            //   alignItems: "center",
-            //   borderColor: "black",
-            //   borderWidth: 2,
-            //   elevation: 8,
-            // }}
+            style={DetailsOfWorkStyles.TextInput}
             onChangeText={(text) => onChangeText(text)}
-            // value={value}
+            value={value}
           />
-        </View>
 
-        <View style={{ marginTop: 20 }}>
-          <Text style={{ color: "#003300", fontSize: 20 }}>Product</Text>
-          <Picker
-            selectedValue={theDetails.Product}
-            style={{
-              width: 250,
-              height: 50,
-              backgroundColor: "#E5E5E5",
-              borderRadius: 10,
-              borderWidth: 2,
-            }}
-            onValueChange={(itemValue, itemIndex) => {
-              const detailsObj = {};
-              detailsObj.Product = itemValue;
-              setTheDetails({ ...theDetails, ...detailsObj });
-            }}
-          >
-            {products.map((product, index) => (
-              <Picker.Item label={product} value={product} key={index} />
-            ))}
-          </Picker>
-        </View>
-        <MakeCamera
-          style={{ elevation: 80, zIndex: 50 }}
-          startCamera={startCamera}
-          setStartCamera={setStartCamera}
-        />
+          <Text style={DetailsOfWorkStyles.titletext}>Product</Text>
 
-        <View style={{ elevation: 80 }}>
-          <TouchableOpacity
-            style={{
-              // position: "absolute",
-              marginTop: 40,
-              backgroundColor: "#00ff00",
-              borderRadius: 20,
-              padding: 10,
-              width: 200,
-              // flex: 1,
-              elevation: 100,
-              zIndex: -500,
-            }}
-            onPress={onPress}
-          >
-            <Text>Confirm</Text>
-          </TouchableOpacity>
+          <View style={DetailsOfWorkStyles.picker}>
+            <Picker
+              style={{
+                width: "80%",
+                height: 50,
+              }}
+              selectedValue={theDetails.Product}
+              onValueChange={(itemValue, itemIndex) => {
+                const detailsObj = {};
+                detailsObj.Product = itemValue;
+                setTheDetails({ ...theDetails, ...detailsObj });
+              }}
+            >
+              {products.map((product, index) => (
+                <Picker.Item label={product} value={product} key={index} />
+              ))}
+            </Picker>
+          </View>
+
+          {image ? (
+            <View>
+              <Image
+                source={{ uri: image.uri }}
+                style={{ marginTop: 15, width: 80, height: 120 }}
+              ></Image>
+            </View>
+          ) : (
+            <TouchableOpacity style={{ marginTop: 50 }} onPress={__startCamera}>
+              <Icon name="camera" size={80} color={"#000"} />
+            </TouchableOpacity>
+          )}
+
+          <View style={DetailsOfWorkStyles.btnView}>
+            <TouchableOpacity style={DetailsOfWorkStyles.btn} onPress={onPress}>
+              <Text style={DetailsOfWorkStyles.btntext}>Confirm</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={DetailsOfWorkStyles.btn}
+              onPress={() => {
+                setShow(false);
+              }}
+            >
+              <Text style={DetailsOfWorkStyles.btntext}>cancel</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
     </>
