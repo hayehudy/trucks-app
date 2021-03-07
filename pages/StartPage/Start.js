@@ -13,7 +13,6 @@ const StartPage = ({ navigation }) => {
   const [textLocation, setTextLocation] = useState("");
   const [map, setMap] = useState();
   const [errorMsg, setErrorMsg] = useState(null);
-  const [cartproduct, setCartproduct] = useState([]);
 
   const month = new Date().getMonth() + 1;
   const date = new Date().getDate();
@@ -31,19 +30,12 @@ const StartPage = ({ navigation }) => {
   ];
 
   useEffect(() => {
-    coordinates();
-    // (async () => {
-    //   let location = await Location.getCurrentPositionAsync({});
-    //   setLatitude(location.coords.latitude);
-    //   setLongitude(location.coords.longitude);
-    // })();
+    (async () => {
+      let location = await Location.getCurrentPositionAsync({});
+      setLatitude(location.coords.latitude);
+      setLongitude(location.coords.longitude);
+    })();
   }, []);
-
-  const coordinates = async () => {
-    let location = await Location.getCurrentPositionAsync({});
-    setLatitude(location.coords.latitude);
-    setLongitude(location.coords.longitude);
-  };
 
   let textlocation = `קו רוחב  ${latitude} קו אורך  ${longitude}`;
 
@@ -88,30 +80,11 @@ const StartPage = ({ navigation }) => {
       hours < 10 ? "0" + hours : hours
     }:${minutes < 10 ? "0" + minutes : minutes}
     `);
-    coordinates();
     setTextLocation(textlocation);
     setMap(mapview);
-    aaa();
-    // setTimeout(() => {
-    //   navigation.navigate("DetailsPage");
-    // }, 5000);
-  };
-
-  const aaa = async () => {
-    await setCartproduct([
-      ...cartproduct,
-      {
-        a: startTime,
-        b: textLocation,
-        // c: { map },
-      },
-    ]);
-  };
-
-  const as = () => {
-    setInterval(() => {
-      <Text>{startTime}</Text>;
-    }, 3000);
+    setTimeout(() => {
+      navigation.navigate("DetailsPage");
+    }, 5000);
   };
 
   return (
@@ -127,29 +100,12 @@ const StartPage = ({ navigation }) => {
             Start{"\n"}The{"\n"}Day
           </Text>
         </TouchableOpacity>
-        <ScrollView>
-          <View style={{ height: 200, width: 300 }}>
-            <Text>
-              {"\n"}
-              {startTime}
-              {textLocation}
-              {setInterval(() => {
-                {
-                  new Date();
-                }
-              }, 3000)}
-            </Text>
-            {map}
-          </View>
-          {cartproduct.map((work, index) => (
-            <View key={index}>
-              <View style={{ height: 50, width: 300 }}>
-                <Text>{work.a}</Text>
-                <Text>{work.b}</Text>
-              </View>
-            </View>
-          ))}
-        </ScrollView>
+        <Text>
+          {"\n"}
+          {startTime}
+          {textLocation}
+        </Text>
+        {map}
       </View>
     </View>
   );
