@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   ScrollView,
   StyleSheet,
@@ -13,7 +13,7 @@ import {
 import { StatusBar } from "expo-status-bar";
 import WorksStyles from "./WorksStyles";
 import HeadBar from "../../component/HeadBar";
-import { useState } from "react/cjs/react.development";
+// import { useState } from "react/cjs/react.development";
 import DetailsOfWork from "../DetailsOfWorkPage/DetailsOfWork";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 

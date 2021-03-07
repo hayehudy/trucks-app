@@ -9,7 +9,7 @@ const DetailsOfWorkStyles = StyleSheet.create({
     marginTop: 30,
     alignItems: "center",
     alignSelf: "center",
-    backgroundColor: "#ffa31a",
+    backgroundColor: "#cccccc",
     width: "90%",
     height: 500,
     borderRadius: 50,
@@ -18,7 +18,7 @@ const DetailsOfWorkStyles = StyleSheet.create({
   headertext: {
     marginTop: 20,
     fontSize: 25,
-    color: "#ffffff",
+    color: "#000",
     fontWeight: "bold",
   },
 
@@ -33,7 +33,7 @@ const DetailsOfWorkStyles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
     marginTop: 10,
-    backgroundColor: "#cccccc",
+    backgroundColor: "#ffffff",
     borderRadius: 20,
     width: "80%",
     height: 50,
@@ -43,7 +43,7 @@ const DetailsOfWorkStyles = StyleSheet.create({
   picker: {
     marginTop: 10,
     borderColor: "#000",
-    backgroundColor: "#cccccc",
+    backgroundColor: "#ffffff",
     borderWidth: 2,
     width: "80%",
     borderRadius: 20,

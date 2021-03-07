@@ -35,7 +35,10 @@ const DetailsPage = ({ navigation }) => {
   };
 
   const onPress = () => {
-    navigation.navigate("WorksPage", details);
+    navigation.navigate(
+      "WorksPage"
+      // , details
+    );
   };
 
   return (

@@ -58,7 +58,7 @@ const LogInPage = ({ navigation }) => {
       const valuepassword = await AsyncStorage.getItem("password");
       // console.log(valueemail);
       // console.log(valuepassword);
-      JSON.parse(valueemail) === "א" && JSON.parse(valuepassword) === "1"
+      JSON.parse(valueemail) === "a" && JSON.parse(valuepassword) === "1"
         ? access()
         : err();
     } catch (e) {
@@ -120,7 +120,7 @@ const LogInPage = ({ navigation }) => {
           <View style={LogInStyles.message}>
             <Text style={LogInStyles.messagetext}>
               {" "}
-              you have successfully connected
+              you have successfully{"\n"}connected
             </Text>
           </View>
         )}
@@ -128,10 +128,10 @@ const LogInPage = ({ navigation }) => {
         {messageErr && (
           <View style={LogInStyles.message}>
             <Text style={LogInStyles.messagetext}>
-              The email or password is incorrect
+              The email or password{"\n"}is incorrect
             </Text>
             <TouchableOpacity
-              style={LogInStyles.loginBtn}
+              style={LogInStyles.errBtn}
               onPress={() => {
                 setMessageErr(false);
                 setLogin(true);

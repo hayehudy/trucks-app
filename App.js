@@ -15,6 +15,8 @@ import makeCamera from "./component/MakeCamera";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import Iconmaterial from "react-native-vector-icons/MaterialCommunityIcons";
+import { Camera } from "expo-camera";
+import * as Location from "expo-location";
 
 export default function App() {
   const Drawer = createDrawerNavigator();
@@ -25,9 +27,10 @@ export default function App() {
       try {
         const valueemail = await AsyncStorage.getItem("email");
         const valuepassword = await AsyncStorage.getItem("password");
-        JSON.parse(valueemail) === "א" && JSON.parse(valuepassword) === "1"
+        JSON.parse(valueemail) === "a" && JSON.parse(valuepassword) === "1"
           ? setloadlogin(false)
-          : null;
+          : Location.requestPermissionsAsync();
+        Camera.requestPermissionsAsync();
       } catch (e) {
         // error reading value
       }
@@ -35,9 +38,9 @@ export default function App() {
   }, []);
 
   const textDrawer = {
-    color: "red",
     fontWeight: "700",
     fontSize: 20,
+    color: "#000",
   };
 
   const clearAsyncStorage = () => {
@@ -108,7 +111,7 @@ export default function App() {
           options={{
             title: "Start",
             drawerIcon: ({ focused, size }) => (
-              <Icon name="power-off" size={30} color={"red"} />
+              <Icon name="power-off" size={30} />
             ),
           }}
         />
@@ -118,7 +121,7 @@ export default function App() {
           options={{
             title: "Details",
             drawerIcon: ({ focused, size }) => (
-              <Iconmaterial name="card-text" size={30} color={"red"} />
+              <Iconmaterial name="card-text" size={30} />
             ),
           }}
         />
@@ -128,7 +131,7 @@ export default function App() {
           options={{
             title: "Works",
             drawerIcon: ({ focused, size }) => (
-              <Iconmaterial name="text-box-plus" size={30} color={"red"} />
+              <Iconmaterial name="text-box-plus" size={30} />
             ),
           }}
         />

@@ -85,10 +85,11 @@ const WorksStyles = StyleSheet.create({
   },
 
   modaltext: {
-    fontSize: 24,
+    fontSize: 21,
     fontWeight: "bold",
-    color: "red",
+    color: "#000",
     lineHeight: 40,
+    textAlign: "center",
   },
 
   btnmodalView: {
