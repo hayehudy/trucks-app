@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import {
   ScrollView,
   StyleSheet,
@@ -9,11 +9,11 @@ import {
   Alert,
   Modal,
   Image,
+  BackHandler
 } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import WorksStyles from "./WorksStyles";
 import HeadBar from "../../component/HeadBar";
-import { useState } from "react/cjs/react.development";
 import DetailsOfWork from "../DetailsOfWorkPage/DetailsOfWork";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
@@ -34,7 +34,7 @@ const WorksPage = ({ route, navigation }) => {
   useEffect(() => {
     if (capturedImage) {
       console.log("o ye!");
-      console.log(capturedImage.uri);
+      // console.log(capturedImage);
       setImage(capturedImage);
     }
   }, [capturedImage]);
@@ -176,6 +176,11 @@ const WorksPage = ({ route, navigation }) => {
           <View>
             <TouchableOpacity style={WorksStyles.btn} onPress={onPress}>
               <Text style={WorksStyles.textbtn}>New Work</Text>
+            </TouchableOpacity>
+          </View>
+          <View>
+            <TouchableOpacity style={WorksStyles.btn} onPress={() => BackHandler.exitApp()}>
+              <Text style={WorksStyles.textbtn}>Exit</Text>
             </TouchableOpacity>
           </View>
         </View>

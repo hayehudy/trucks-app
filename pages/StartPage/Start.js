@@ -35,6 +35,9 @@ const StartPage = ({ navigation }) => {
       setLocation(location);
     })();
   }, []);
+
+  Location.requestPermissionsAsync();
+  
   let textlocation = "Waiting..";
   if (errorMsg) {
     textlocation = errorMsg;

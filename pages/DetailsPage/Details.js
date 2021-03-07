@@ -40,7 +40,7 @@ const DetailsPage = ({ navigation }) => {
 
   return (
     <>
-      {console.log(details)}
+      {/* {console.log(details)} */}
       <View style={{ marginTop: StatusBar.currentHieght || 30 }}>
         <HeadBar navigation={navigation} />
         <View style={{ alignItems: "center" }}>
