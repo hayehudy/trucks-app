@@ -104,7 +104,7 @@ const WorksStyles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     width: "40%",
-    backgroundColor: "red",
+    backgroundColor: "orange",
     padding: 10,
     height: 50,
     borderRadius: 15,
