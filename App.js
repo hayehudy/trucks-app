@@ -12,6 +12,7 @@ import StartPage from "./pages/StartPage/Start";
 import DetailsPage from "./pages/DetailsPage/Details";
 import WorksPage from "./pages/WorksPage/Works";
 import makeCamera from "./component/MakeCamera";
+import SendLocation from "./pages/send location/sendLocation";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import Iconmaterial from "react-native-vector-icons/MaterialCommunityIcons";
@@ -28,7 +29,7 @@ export default function App() {
         const valueemail = await AsyncStorage.getItem("email");
         const valuepassword = await AsyncStorage.getItem("password");
         JSON.parse(valueemail) === "a" && JSON.parse(valuepassword) === "1"
-          ? setloadlogin(false)
+          ? setloadlogin(true)
           : Location.requestPermissionsAsync();
         Camera.requestPermissionsAsync();
       } catch (e) {
@@ -105,6 +106,16 @@ export default function App() {
             }}
           />
         )}
+        {/* <Drawer.Screen
+          name="sendLocation"
+          component={SendLocation}
+          options={{
+            title: "Send Location",
+            drawerIcon: ({ focused, size }) => (
+              <Iconmaterial name="text-box-plus" size={30} />
+            ),
+          }}
+        /> */}
         <Drawer.Screen
           name="StartPage"
           component={StartPage}

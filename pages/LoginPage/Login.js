@@ -1,13 +1,22 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, Image, TextInput, TouchableOpacity } from "react-native";
+import {
+  Text,
+  View,
+  Image,
+  TextInput,
+  TouchableOpacity,
+  Linking,
+} from "react-native";
 import { StatusBar } from "expo-status-bar";
 import LogInStyles from "./LoginStyles";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import IconPhone from "react-native-vector-icons/Feather";
 
 const LogInPage = ({ navigation }) => {
   const [login, setLogin] = useState(true);
   const [messageAccess, setMessageAccess] = useState(false);
   const [messageErr, setMessageErr] = useState(false);
+  const [messageErrEmail, setMessageErrEmail] = useState(false);
 
   useEffect(() => {
     // (async () => {
@@ -24,16 +33,16 @@ const LogInPage = ({ navigation }) => {
     setLogin(true);
   }, []);
 
-  // const validation = () => {
-  //   // setPagelogin(false);
-  //   // setpagedrawer(true);
-  //   navigation.navigate("StartPage");
-  // };
-
-  const valueemail = async (valueemail) => {
+  const valueemail = (valueemail) => {
+    const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
+    if (reg.test(valueemail) === false) {
+      setMessageErrEmail(true);
+    } else {
+      setMessageErrEmail(false);
+    }
     try {
       const email = JSON.stringify(valueemail);
-      await AsyncStorage.setItem("email", email);
+      AsyncStorage.setItem("email", email);
       // console.log(`
       // email - ${email}`);
     } catch (e) {
@@ -79,6 +88,11 @@ const LogInPage = ({ navigation }) => {
     setLogin(false);
   };
 
+  const pressCall = () => {
+    const url = "tel:123456789";
+    Linking.openURL(url);
+  };
+
   return (
     <View style={{ marginTop: StatusBar.currentHieght || 30 }}>
       <View style={LogInStyles.container}>
@@ -88,6 +102,9 @@ const LogInPage = ({ navigation }) => {
           <View style={LogInStyles.login}>
             <View style={LogInStyles.inputView}>
               <TextInput
+                autoFocus={true}
+                autoCompleteType={"email"}
+                keyboardType={"email-address"}
                 style={LogInStyles.TextInput}
                 placeholder="Email"
                 placeholderTextColor="#003f5c"
@@ -95,8 +112,17 @@ const LogInPage = ({ navigation }) => {
               />
             </View>
 
+            <View style={LogInStyles.viewvalidemail}>
+              {messageErrEmail && (
+                <Text style={{ color: "red" }}>
+                  Please enter a valid email address{" "}
+                </Text>
+              )}
+            </View>
+
             <View style={LogInStyles.inputView}>
               <TextInput
+                // autoCompleteType={"password"}
                 style={LogInStyles.TextInput}
                 placeholder="Password"
                 placeholderTextColor="#003f5c"
@@ -141,6 +167,14 @@ const LogInPage = ({ navigation }) => {
             </TouchableOpacity>
           </View>
         )}
+        <TouchableOpacity style={LogInStyles.iconphone} onPress={pressCall}>
+          <IconPhone
+            name="phone-call"
+            backgroundColor="transparent"
+            size={40}
+            color="#000"
+          />
+        </TouchableOpacity>
       </View>
     </View>
   );

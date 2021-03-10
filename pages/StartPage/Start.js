@@ -37,7 +37,7 @@ const StartPage = ({ navigation }) => {
     })();
   }, []);
 
-  let textlocation = `קו רוחב  ${latitude} קו אורך  ${longitude}`;
+  let textlocation = `latitude  ${latitude} longitude  ${longitude}`;
 
   // let textlocation = "waiting...;"
 
@@ -91,21 +91,15 @@ const StartPage = ({ navigation }) => {
     <View style={{ marginTop: StatusBar.currentHieght || 30 }}>
       <HeadBar navigation={navigation} />
       <View style={StartStyles.container}>
-        <TouchableOpacity onPress={onPress}>
-          <Image
-            style={StartStyles.Btnstart}
-            source={require("./clouds.jpg")}
-          />
-          <Text style={StartStyles.loginText}>
-            Start{"\n"}The{"\n"}Day
-          </Text>
+        <TouchableOpacity onPress={onPress} style={StartStyles.Btnstart}>
+          <Text style={StartStyles.loginText}>Start The Day</Text>
         </TouchableOpacity>
-        <Text>
+        {/* <Text>
           {"\n"}
           {startTime}
           {textLocation}
         </Text>
-        {map}
+        {map} */}
       </View>
     </View>
   );
