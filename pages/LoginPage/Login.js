@@ -12,7 +12,7 @@ import LogInStyles from "./LoginStyles";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import IconPhone from "react-native-vector-icons/Feather";
 
-const LogInPage = ({ navigation }) => {
+const LogInPage = ({setStart,setloadlogin}) => {
   const [login, setLogin] = useState(true);
   const [messageAccess, setMessageAccess] = useState(false);
   const [messageErr, setMessageErr] = useState(false);
@@ -79,7 +79,9 @@ const LogInPage = ({ navigation }) => {
     setMessageAccess(true);
     setLogin(false);
     setTimeout(() => {
-      navigation.navigate("StartPage");
+      setloadlogin(false);
+      setStart(true)
+      // navigation.navigate("StartPage");
     }, 1000);
   };
 

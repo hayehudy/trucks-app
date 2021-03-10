@@ -58,6 +58,7 @@ const WorksStyles = StyleSheet.create({
   },
 
   btn: {
+    marginBottom:15,
     alignSelf: "center",
     alignItems: "center",
     backgroundColor: "orange",
@@ -114,6 +115,7 @@ const WorksStyles = StyleSheet.create({
     color: "#fff",
     fontWeight: "bold",
   },
+  
 });
 
 export default WorksStyles;

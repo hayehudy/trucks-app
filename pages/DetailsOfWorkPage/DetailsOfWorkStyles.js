@@ -58,11 +58,21 @@ const DetailsOfWorkStyles = StyleSheet.create({
     justifyContent: "space-between",
   },
 
+  btnCamera: {
+    // padding: 15,
+    marginTop: 10,
+    backgroundColor: "#ffffff",
+    borderRadius: 20,
+    width: "80%",
+    height: 50,
+    borderWidth: 2,
+  },
+
   btn: {
     // marginTop: 25,
     backgroundColor: "#000",
     borderRadius: 20,
-    padding: 10,
+    padding: 7,
     width: "45%",
     height: 50,
     alignItems: "center",

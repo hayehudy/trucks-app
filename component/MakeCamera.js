@@ -10,13 +10,13 @@ import { StatusBar } from "expo-status-bar";
 
 import { Camera } from "expo-camera";
 import * as Permissions from "expo-permissions";
-import { useIsFocused } from "@react-navigation/native";
-import { useRoute } from "@react-navigation/native";
+// import { useIsFocused } from "@react-navigation/native";
+// import { useRoute } from "@react-navigation/native";
 
-export default function MakeCamera({ navigation }) {
+export default function MakeCamera({setCameraStart,setWorkPage,setTheCapturedImage}) {
   const [hasPermission, setHasPermission] = useState(null);
   let cameraRef;
-  const isFocused = useIsFocused();
+  // const isFocused = useIsFocused();
   const [previewVisible, setPreviewVisible] = useState(false);
   const [capturedImage, setCapturedImage] = useState(null);
 
@@ -44,13 +44,15 @@ export default function MakeCamera({ navigation }) {
 
     const __savePicture = () => {
       setPreviewVisible(false);
-      navigation.navigate("WorksPage", capturedImage);
+      setCameraStart(false);
+      setWorkPage(true);
+      setTheCapturedImage(capturedImage);
+      // navigation.navigate("WorksPage", capturedImage);
     };
 
     return (
       <View
-        style={{
-          marginTop: StatusBar.currentHieght || 30,
+        style={{marginTop: StatusBar.currentHieght || 30,
         }}
       >
         <View
@@ -125,9 +127,10 @@ export default function MakeCamera({ navigation }) {
       {previewVisible && capturedImage ? (
         <CameraPreview photo={capturedImage} />
       ) : (
-        isFocused && (
+        
           <View style={{ flex: 1, marginTop: 30 }}>
-            <Camera style={{ flex: 1 }} ref={(ref) => (cameraRef = ref)}>
+      {/* {isFocused&&( */}
+      <Camera autoFocus={"on"} style={{ flex: 1 }} ref={(ref) => (cameraRef = ref)}>
               <View
                 style={{
                   flex: 1,
@@ -168,8 +171,9 @@ export default function MakeCamera({ navigation }) {
                 </View>
               </View>
             </Camera>
+            {/* )} */}
           </View>
-        )
+        
       )}
     </>
   );

@@ -15,17 +15,21 @@ const DetailsPicker = (props) => {
   const detailsObj = {};
   return (
     <View style={{ alignItems: "center" }}>
-      <Text style={{ marginTop: 10, color: "#003300", fontSize: 15 }}>
+      <Text style={{marginTop:10,color: "#003300", fontSize: 15, fontWeight:"bold"}}>
         {detail}
       </Text>
+      <View style={{
+         borderColor: "#000",
+         backgroundColor: "#ffffff",
+         borderWidth: 2,
+         width: 250,
+         borderRadius: 20,
+      }}>
       <Picker
         selectedValue={details[detail]}
         style={{
-          width: 250,
+          width: "80%",
           height: 40,
-          backgroundColor: "#E5E5E5",
-          borderRadius: 10,
-          borderWidth: 2,
         }}
         onValueChange={(itemValue, itemIndex) => {
           detailsObj[detail] = itemValue;
@@ -36,6 +40,7 @@ const DetailsPicker = (props) => {
           <Picker.Item label={option} value={option} key={index} />
         ))}
       </Picker>
+      </View> 
     </View>
   );
 };

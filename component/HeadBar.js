@@ -14,8 +14,8 @@ import HeadBarStyles from "./HeadBarStyles";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Iconmaterial from "react-native-vector-icons/MaterialCommunityIcons";
 
-const HeadBar = ({ navigation }) => {
-  const [showModal, setShowModal] = useState(false);
+const HeadBar = ({setloadlogin}) => {
+const [showModal, setShowModal]=useState(false)
 
   const pressCall = () => {
     const url = "tel:123456789";
@@ -46,7 +46,8 @@ const HeadBar = ({ navigation }) => {
               style={HeadBarStyles.btnmodal}
               onPress={() => {
                 clearAsyncStorage();
-                navigation.navigate("LoginPage");
+                setloadlogin(true);
+                setShowModal(false)
               }}
             >
               <Text style={HeadBarStyles.textbtnmodal}>Yes</Text>
