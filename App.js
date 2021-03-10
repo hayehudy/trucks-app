@@ -12,6 +12,7 @@ import StartPage from "./pages/StartPage/Start";
 import DetailsPage from "./pages/DetailsPage/Details";
 import WorksPage from "./pages/WorksPage/Works";
 import MakeCamera from "./component/MakeCamera";
+import SendLocation from "./pages/send location/sendLocation";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import Iconmaterial from "react-native-vector-icons/MaterialCommunityIcons";

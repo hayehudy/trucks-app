@@ -9,21 +9,22 @@ const logInStyles = StyleSheet.create({
 
   image: {
     marginTop: 100,
-    width: 300,
-    height: 100,
+    width: 250,
+    height: 80,
     marginBottom: 40,
   },
+
   login: {
     width: "100%",
     alignItems: "center",
   },
 
   inputView: {
-    backgroundColor: "#E5E5E5",
+    backgroundColor: "#fff",
     borderRadius: 10,
     width: "70%",
     height: 55,
-    marginBottom: 20,
+    marginBottom: 5,
     alignItems: "center",
     borderColor: "black",
     borderWidth: 2,
@@ -42,7 +43,7 @@ const logInStyles = StyleSheet.create({
     height: 50,
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 40,
+    marginTop: 20,
     backgroundColor: "#7F7F7F",
     color: "#fff",
     fontSize: 30,
@@ -63,6 +64,12 @@ const logInStyles = StyleSheet.create({
     borderWidth: 2,
     elevation: 30,
   },
+  viewvalidemail: {
+    width: "70%",
+    height: 30,
+    color: "red",
+    alignItems: "center",
+  },
 
   errBtn: {
     width: "50%",
@@ -81,6 +88,13 @@ const logInStyles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
     lineHeight: 40,
+  },
+  iconphone: {
+    position: "absolute",
+    marginTop: 550,
+    alignItems: "center",
+    alignContent: "center",
+    textAlign: "center",
   },
 });
 

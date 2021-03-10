@@ -76,7 +76,7 @@ const WorksStyles = StyleSheet.create({
   modalView: {
     backgroundColor: "#fff",
     width: "80%",
-    height: 250,
+    height: "100%",
     borderRadius: 20,
     borderWidth: 2,
     padding: 20,

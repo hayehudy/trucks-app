@@ -137,7 +137,7 @@ const WorksPage = ({setCameraStart, setWorkPage,theCapturedImage}) => {
               flex: 0.8,
             }}
           >
-            <Text style={WorksStyles.headertext}>DAYLY LOADS</Text>
+            <Text style={WorksStyles.headertext}>DAILY LOADS</Text>
 
             <View style={WorksStyles.headeritems}>
               <View style={WorksStyles.row1}>

@@ -56,10 +56,10 @@ export default function MakeCamera({setCameraStart,setWorkPage,setTheCapturedIma
         }}
       >
         <View
-          // style={{
-          //   width: "100%",
-          //   height: "100%",
-          // }}
+          style={{
+            width: "100%",
+            height: "100%",
+          }}
         >
           <ImageBackground
             source={{ uri: photo && photo.uri }}
