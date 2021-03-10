@@ -6,7 +6,7 @@ import HeadBar from "../../component/HeadBar";
 import * as Location from "expo-location";
 import MapView, { Marker } from "react-native-maps";
 
-const StartPage = ({ setDetailsPage,setStart }) => {
+const StartPage = ({ setDetailsPage,setStart,setloadlogin }) => {
   const [startTime, setStartTime] = useState("");
   const [latitude, setLatitude] = useState("");
   const [longitude, setLongitude] = useState("");
@@ -91,7 +91,7 @@ const StartPage = ({ setDetailsPage,setStart }) => {
 
   return (
     <View style={{ marginTop: StatusBar.currentHieght || 30 }}>
-      <HeadBar/>
+      <HeadBar setloadlogin={setloadlogin}/>
       <View style={StartStyles.container}>
         <TouchableOpacity onPress={onPress} style={StartStyles.Btnstart}>
           <Text style={StartStyles.loginText}>Start The Day</Text>

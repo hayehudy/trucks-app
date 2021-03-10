@@ -14,7 +14,7 @@ import { Picker } from "@react-native-picker/picker";
 import DetailsPicker from "../../component/DetailsPicker";
 // import { useRoute } from "@react-navigation/native";
 
-const DetailsPage = ({setDetailsPage,setWorkPage}) => {
+const DetailsPage = ({setDetailsPage,setWorkPage,setloadlogin}) => {
   // const route = useRoute();
   const [value, setValue] = useState();
   const [details, setDetails] = useState({});
@@ -47,7 +47,7 @@ const DetailsPage = ({setDetailsPage,setWorkPage}) => {
     <>
       {/* {console.log(details)} */}
       <View style={{ marginTop: StatusBar.currentHieght || 30 }}>
-        <HeadBar/>
+        <HeadBar setloadlogin={setloadlogin}/>
         <View style={{ alignItems: "center", width:"100%" }}>
           {/* <Text>DETAILS</Text> */}
           <Text style={{ marginTop: 10, color: "#003300", fontWeight:"bold" }}>TruckNumber</Text>

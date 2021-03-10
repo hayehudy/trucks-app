@@ -129,7 +129,8 @@ export default function MakeCamera({setCameraStart,setWorkPage,setTheCapturedIma
       ) : (
         
           <View style={{ flex: 1, marginTop: 30 }}>
-            <Camera autoFocus={"on"} style={{ flex: 1 }} ref={(ref) => (cameraRef = ref)}>
+      {/* {isFocused&&( */}
+      <Camera autoFocus={"on"} style={{ flex: 1 }} ref={(ref) => (cameraRef = ref)}>
               <View
                 style={{
                   flex: 1,
@@ -170,6 +171,7 @@ export default function MakeCamera({setCameraStart,setWorkPage,setTheCapturedIma
                 </View>
               </View>
             </Camera>
+            {/* )} */}
           </View>
         
       )}

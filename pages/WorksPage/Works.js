@@ -18,7 +18,7 @@ import DetailsOfWork from "../DetailsOfWorkPage/DetailsOfWork";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const WorksPage = ({setCameraStart, setWorkPage,theCapturedImage}) => {
+const WorksPage = ({setCameraStart, setWorkPage,theCapturedImage,setloadlogin}) => {
   const [show, setShow] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [works, setWorks] = useState([]);
@@ -114,11 +114,12 @@ const WorksPage = ({setCameraStart, setWorkPage,theCapturedImage}) => {
       <View
         style={{
           marginTop: StatusBar.currentHieght || 30,
+          marginBottom:60
         }}
       >
-        <HeadBar/>
+        <HeadBar setloadlogin={setloadlogin}/>
 
-        <View style={{ height: "100%" }}>
+        <View style={{ height: "100%"}}>
           {show && (
             <DetailsOfWork
               works={works}
@@ -149,7 +150,7 @@ const WorksPage = ({setCameraStart, setWorkPage,theCapturedImage}) => {
               </View>
 
               <View style={WorksStyles.row3}>
-                <Icon name="camera" size={30} color={"#000"} />
+              <Text style={WorksStyles.titleheader}>Ticket</Text>
               </View>
 
               <View style={WorksStyles.row4} />

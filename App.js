@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
-import {
-  createDrawerNavigator,
-  DrawerContentScrollView,
-  DrawerItemList,
-  DrawerItem,
-} from "@react-navigation/drawer";
+// import {
+//   createDrawerNavigator,
+//   DrawerContentScrollView,
+//   DrawerItemList,
+//   DrawerItem,
+// } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from '@react-navigation/stack';
 import LogInPage from "./pages/LoginPage/Login";
 import StartPage from "./pages/StartPage/Start";
 import DetailsPage from "./pages/DetailsPage/Details";
@@ -20,13 +21,14 @@ import { Camera } from "expo-camera";
 import * as Location from "expo-location";
 
 export default function App() {
-  const Drawer = createDrawerNavigator();
+  // const Drawer = createDrawerNavigator();
   const [loadlogin, setloadlogin] = useState(true);
   const [start, setStart] = useState(false);
   const [detailsPage, setDetailsPage] = useState(false);
   const [worksPage, setWorkPage] = useState(false);
   const [cameraStart,setCameraStart]=useState(false);
-  const [theCapturedImage,setTheCapturedImage]=useState()
+  const [theCapturedImage,setTheCapturedImage]=useState();
+  const Stack = createStackNavigator();
 
   useEffect(() => {
     (async () => {
@@ -56,11 +58,16 @@ export default function App() {
   return (
     <View>
     {loadlogin&&<LogInPage setStart={setStart} setloadlogin={setloadlogin}/>}
-    {start&&<StartPage setDetailsPage={setDetailsPage} setStart={setStart}/>}
-    {detailsPage&&<DetailsPage setDetailsPage={setDetailsPage} setWorkPage={setWorkPage}/>}
-    {worksPage&&<WorksPage setCameraStart={setCameraStart} setWorkPage={setWorkPage} theCapturedImage={theCapturedImage}/>}
+    {start&&<StartPage setDetailsPage={setDetailsPage} setStart={setStart} setloadlogin={setloadlogin}/>}
+    {detailsPage&&<DetailsPage setDetailsPage={setDetailsPage} setWorkPage={setWorkPage} setloadlogin={setloadlogin}/>}
+    {worksPage&&<WorksPage setCameraStart={setCameraStart} setWorkPage={setWorkPage} theCapturedImage={theCapturedImage} setloadlogin={setloadlogin}/>}
     {cameraStart&&<MakeCamera setCameraStart={setCameraStart} setWorkPage={setWorkPage} setTheCapturedImage={setTheCapturedImage}/>}
   </View>
+  //   <NavigationContainer>
+  //   <Stack.Navigator>
+  //   <Stack.Screen name="MakeCamera" component={MakeCamera} />
+  // </Stack.Navigator>
+  // </NavigationContainer>
     )}
     // <NavigationContainer>
     //   <Drawer.Navigator
