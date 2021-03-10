@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   ScrollView,
   StyleSheet,
@@ -16,14 +16,17 @@ import WorksStyles from "./WorksStyles";
 import HeadBar from "../../component/HeadBar";
 import DetailsOfWork from "../DetailsOfWorkPage/DetailsOfWork";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const WorksPage = ({ route, navigation }) => {
+const WorksPage = ({setCameraStart, setWorkPage,theCapturedImage}) => {
   const [show, setShow] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [works, setWorks] = useState([]);
+  const [status, setStatus] = useState();
+  const [loads, setLoads] = useState();
   const [currentWork, setCurrentWork] = useState({});
-  const details = route.params;
-  const capturedImage = route.params;
+  // const details = route.params;
+  const capturedImage = theCapturedImage;
   const [image, setImage] = useState();
   const [imageStyle, setImageStyle] = useState({
     width: 50,
@@ -31,7 +34,7 @@ const WorksPage = ({ route, navigation }) => {
     marginTop: -15,
   });
 
-  useEffect(() => {
+  useEffect(() => {   
     if (capturedImage) {
       console.log("o ye!");
       // console.log(capturedImage);
@@ -39,12 +42,26 @@ const WorksPage = ({ route, navigation }) => {
     }
   }, [capturedImage]);
 
+  // useEffect(()=>{async()=>{
+  //   const theLoads=await AsyncStorage.getItem("loads");
+  //   if (!theLoads){
+  //   const loadsArr = JSON.stringify([]);
+  //   await AsyncStorage.setItem("loads", loadsArr);}
+  //   else {const theWorks=JSON.stringify(works);
+  //   await AsyncStorage.setItem("loads", theWorks)}}
+  // },[works])
+
+  // const getLoads=async()=>{
+  //   const theLoads=await AsyncStorage.getItem("loads");
+  //   setLoads(JSON.parse(theLoads))
+  // }
+
   const onPress = () => {
     setShow(true);
     setImage();
   };
 
-  const theModal = () => {
+  const TheModal = () => {
     return (
       <Modal
         animationType="slide"
@@ -54,22 +71,26 @@ const WorksPage = ({ route, navigation }) => {
           Alert.alert("Modal has been closed.");
         }}
       >
-        <View style={WorksStyles.modalView}>
-          <Text style={WorksStyles.modaltext}>
+          <View style={WorksStyles.modalView}>
+          {status==="remove"?
+          (<Text style={WorksStyles.modaltext}>
             Tons or Load - {currentWork.TonsOrLoad},{"\n"}Product -
             {currentWork.Product} {"\n"}
             Remove this row?
-          </Text>
+          </Text>):(<Text style={WorksStyles.modaltext}>Are you sure you want to exit the app?</Text>)}
           <View style={WorksStyles.btnmodalView}>
+          
             <TouchableHighlight
               style={WorksStyles.btnmodal}
               onPress={() => {
+                if (status==="remove"){
                 let theWorks = works;
                 let theNewWorks = theWorks.filter(
                   (x, ind) => ind !== currentWork.index
                 );
                 setWorks(theNewWorks);
-                setShowModal(false);
+                setShowModal(false)}
+                  else {BackHandler.exitApp()}
               }}
             >
               <Text style={WorksStyles.textbtnmodal}>Yes</Text>
@@ -95,7 +116,7 @@ const WorksPage = ({ route, navigation }) => {
           marginTop: StatusBar.currentHieght || 30,
         }}
       >
-        <HeadBar navigation={navigation} />
+        <HeadBar/>
 
         <View style={{ height: "100%" }}>
           {show && (
@@ -104,7 +125,9 @@ const WorksPage = ({ route, navigation }) => {
               setWorks={setWorks}
               setShow={setShow}
               image={image}
-              navigation={navigation}
+              setCameraStart={setCameraStart}
+              setWorkPage={setWorkPage}
+              // navigation={navigation}
             />
           )}
 
@@ -114,7 +137,7 @@ const WorksPage = ({ route, navigation }) => {
               flex: 0.8,
             }}
           >
-            <Text style={WorksStyles.headertext}>THE WORKS</Text>
+            <Text style={WorksStyles.headertext}>DAYLY LOADS</Text>
 
             <View style={WorksStyles.headeritems}>
               <View style={WorksStyles.row1}>
@@ -158,6 +181,7 @@ const WorksPage = ({ route, navigation }) => {
                     <TouchableOpacity
                       onPress={() => {
                         setShowModal(true);
+                        setStatus("remove");
                         let theWork = work;
                         theWork.index = index;
                         setCurrentWork(theWork);
@@ -171,18 +195,19 @@ const WorksPage = ({ route, navigation }) => {
             </ScrollView>
           </View>
 
-          {theModal()}
+          <TheModal/>
 
           <View>
             <TouchableOpacity style={WorksStyles.btn} onPress={onPress}>
-              <Text style={WorksStyles.textbtn}>New Work</Text>
+              <Text style={WorksStyles.textbtn}>Add Load</Text>
             </TouchableOpacity>
           </View>
           <View>
-            <TouchableOpacity style={WorksStyles.btn} onPress={() => BackHandler.exitApp()}>
-              <Text style={WorksStyles.textbtn}>Exit</Text>
+            <TouchableOpacity style={WorksStyles.btn} onPress={()=>{setStatus("exit"); setShowModal(true)}}>
+              <Text style={WorksStyles.textbtn}>End The Day</Text>
             </TouchableOpacity>
           </View>
+          
         </View>
       </View>
     </>

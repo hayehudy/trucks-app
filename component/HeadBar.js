@@ -12,7 +12,7 @@ import { Button, Icon } from "native-base";
 import IconPhone from "react-native-vector-icons/Feather";
 import HeadBarStyles from "./HeadBarStyles";
 
-const HeadBar = ({ navigation }) => {
+const HeadBar = () => {
   const pressCall = () => {
     const url = "tel:123456789";
     Linking.openURL(url);
@@ -21,7 +21,7 @@ const HeadBar = ({ navigation }) => {
   return (
     <>
       <View style={{ backgroundColor: "orange", height: 60 }}>
-        <View>
+        {/* <View>
           <Button
             style={HeadBarStyles.Button}
             onPress={() => navigation.toggleDrawer()}
@@ -29,7 +29,7 @@ const HeadBar = ({ navigation }) => {
           >
             <Icon style={HeadBarStyles.Icon} name="menu" />
           </Button>
-        </View>
+        </View> */}
         <View style={HeadBarStyles.logo}>
           <Image style={HeadBarStyles.image} source={require("./logo.png")} />
         </View>

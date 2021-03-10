@@ -63,10 +63,24 @@ const logInStyles = StyleSheet.create({
     borderWidth: 2,
     elevation: 30,
   },
-  messagetext: {
+
+  errBtn: {
+    width: "50%",
+    borderRadius: 10,
+    height: 40,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 20,
+    backgroundColor: "#7F7F7F",
+    color: "#fff",
     fontSize: 20,
+  },
+  messagetext: {
+    fontSize: 22,
     color: "#000",
     fontWeight: "bold",
+    textAlign: "center",
+    lineHeight: 40,
   },
 });
 

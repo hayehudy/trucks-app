@@ -12,10 +12,10 @@ import DetailsStyles from "./DetailsStyles";
 import HeadBar from "../../component/HeadBar";
 import { Picker } from "@react-native-picker/picker";
 import DetailsPicker from "../../component/DetailsPicker";
-import { useRoute } from "@react-navigation/native";
+// import { useRoute } from "@react-navigation/native";
 
-const DetailsPage = ({ navigation }) => {
-  const route = useRoute();
+const DetailsPage = ({setDetailsPage,setWorkPage}) => {
+  // const route = useRoute();
   const [value, setValue] = useState();
   const [details, setDetails] = useState({});
   const options = {
@@ -35,26 +35,28 @@ const DetailsPage = ({ navigation }) => {
   };
 
   const onPress = () => {
-    navigation.navigate("WorksPage", details);
+    setDetailsPage(false);
+    setWorkPage(true)
+    // navigation.navigate(
+    //   "WorksPage"
+    //   // , details
+    // );
   };
 
   return (
     <>
       {/* {console.log(details)} */}
       <View style={{ marginTop: StatusBar.currentHieght || 30 }}>
-        <HeadBar navigation={navigation} />
-        <View style={{ alignItems: "center" }}>
+        <HeadBar/>
+        <View style={{ alignItems: "center", width:"100%" }}>
           {/* <Text>DETAILS</Text> */}
-          <Text style={{ marginTop: 10, color: "#003300" }}>TruckNumber</Text>
+          <Text style={{ marginTop: 10, color: "#003300", fontWeight:"bold" }}>TruckNumber</Text>
           <TextInput
-            style={{
-              width: 250,
-              height: 40,
-              borderColor: "gray",
-              borderWidth: 1,
-            }}
+            style={DetailsStyles.TextInput}
             onChangeText={(text) => onChangeText(text)}
             value={value}
+            numeric
+            keyboardType={"numeric"}
           />
           <DetailsPicker
             theOption="TrucksTypes"
@@ -101,7 +103,7 @@ const DetailsPage = ({ navigation }) => {
           <TouchableOpacity
             style={{
               alignItems: "center",
-              marginTop: 40,
+              marginTop: 10,
               backgroundColor: "orange",
               borderRadius: 20,
               padding: 10,

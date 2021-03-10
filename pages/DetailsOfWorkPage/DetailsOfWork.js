@@ -13,9 +13,11 @@ import { Picker } from "@react-native-picker/picker";
 import { Camera } from "expo-camera";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import MakeCamera from "../../component/MakeCamera";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const DetailsOfWork = (props) => {
-  const { navigation } = props;
+  // const { navigation } = props;
+  const {setWorkPage, setCameraStart}=props;
   const { works, setWorks, setShow, image } = props;
   const products = ["apple", "banana", "egg"];
   const [theDetails, setTheDetails] = useState({});
@@ -44,14 +46,16 @@ const DetailsOfWork = (props) => {
   };
 
   const __startCamera = async () => {
-    navigation.navigate("makeCamera");
+    setWorkPage(false);
+    setCameraStart(true)
+    // navigation.navigate("makeCamera");
   };
 
   return (
     <>
       <View style={DetailsOfWorkStyles.container}>
         <View style={DetailsOfWorkStyles.background}>
-          <Text style={DetailsOfWorkStyles.headertext}>DETAILS OF WORK</Text>
+          <Text style={DetailsOfWorkStyles.headertext}>CURRENT LOAD</Text>
 
           <Text style={DetailsOfWorkStyles.titletext}>Tons or Load</Text>
 
@@ -59,6 +63,8 @@ const DetailsOfWork = (props) => {
             style={DetailsOfWorkStyles.TextInput}
             onChangeText={(text) => onChangeText(text)}
             value={value}
+            numeric
+            keyboardType={"numeric"}
           />
 
           <Text style={DetailsOfWorkStyles.titletext}>Product</Text>
@@ -69,6 +75,7 @@ const DetailsOfWork = (props) => {
                 width: "80%",
                 height: 50,
               }}
+              dropdownIconColor={"red"}
               selectedValue={theDetails.Product}
               onValueChange={(itemValue, itemIndex) => {
                 const detailsObj = {};
@@ -82,6 +89,7 @@ const DetailsOfWork = (props) => {
             </Picker>
           </View>
 
+          <Text style={DetailsOfWorkStyles.titletext}>Add Ticket</Text>
           {image ? (
             <View>
               <Image
@@ -90,8 +98,8 @@ const DetailsOfWork = (props) => {
               ></Image>
             </View>
           ) : (
-            <TouchableOpacity style={{ marginTop: 50 }} onPress={__startCamera}>
-              <Icon name="camera" size={80} color={"#000"} />
+            <TouchableOpacity style={DetailsOfWorkStyles.btnCamera} onPress={__startCamera}>
+              <Icon name="camera" size={40} style={{alignSelf:"center", marginTop:3}} color={"#000"} />
             </TouchableOpacity>
           )}
 
@@ -105,7 +113,7 @@ const DetailsOfWork = (props) => {
                 setShow(false);
               }}
             >
-              <Text style={DetailsOfWorkStyles.btntext}>cancel</Text>
+              <Text style={DetailsOfWorkStyles.btntext}>Cancel</Text>
             </TouchableOpacity>
           </View>
         </View>
