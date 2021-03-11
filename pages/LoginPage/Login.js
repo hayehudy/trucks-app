@@ -12,7 +12,7 @@ import LogInStyles from "./LoginStyles";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import IconPhone from "react-native-vector-icons/Feather";
 
-const LogInPage = ({setStart,setloadlogin}) => {
+const LogInPage = ({ navigation }) => {
   const [login, setLogin] = useState(true);
   const [messageAccess, setMessageAccess] = useState(false);
   const [messageErr, setMessageErr] = useState(false);
@@ -79,9 +79,7 @@ const LogInPage = ({setStart,setloadlogin}) => {
     setMessageAccess(true);
     setLogin(false);
     setTimeout(() => {
-      setloadlogin(false);
-      setStart(true)
-      // navigation.navigate("StartPage");
+      navigation.navigate("StartPage");
     }, 1000);
   };
 
@@ -91,7 +89,7 @@ const LogInPage = ({setStart,setloadlogin}) => {
   };
 
   const pressCall = () => {
-    const url = "tel:123456789";
+    const url = "tel:+19705844550";
     Linking.openURL(url);
   };
 

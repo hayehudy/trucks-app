@@ -16,8 +16,8 @@ import MakeCamera from "../../component/MakeCamera";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const DetailsOfWork = (props) => {
-  // const { navigation } = props;
-  const {setWorkPage, setCameraStart}=props;
+  const { navigation } = props;
+  const { setWorkPage, setCameraStart } = props;
   const { works, setWorks, setShow, image } = props;
   const products = ["apple", "banana", "egg"];
   const [theDetails, setTheDetails] = useState({});
@@ -46,9 +46,9 @@ const DetailsOfWork = (props) => {
   };
 
   const __startCamera = async () => {
-    setWorkPage(false);
-    setCameraStart(true)
-    // navigation.navigate("makeCamera");
+    // setWorkPage(false);
+    // setCameraStart(true)
+    navigation.navigate("makeCamera");
   };
 
   return (
@@ -98,8 +98,16 @@ const DetailsOfWork = (props) => {
               ></Image>
             </View>
           ) : (
-            <TouchableOpacity style={DetailsOfWorkStyles.btnCamera} onPress={__startCamera}>
-              <Icon name="camera" size={40} style={{alignSelf:"center", marginTop:3}} color={"#000"} />
+            <TouchableOpacity
+              style={DetailsOfWorkStyles.btnCamera}
+              onPress={__startCamera}
+            >
+              <Icon
+                name="camera"
+                size={40}
+                style={{ alignSelf: "center", marginTop: 3 }}
+                color={"#000"}
+              />
             </TouchableOpacity>
           )}
 

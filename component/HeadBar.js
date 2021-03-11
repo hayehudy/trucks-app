@@ -13,18 +13,22 @@ import IconPhone from "react-native-vector-icons/Feather";
 import HeadBarStyles from "./HeadBarStyles";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Iconmaterial from "react-native-vector-icons/MaterialCommunityIcons";
+import * as Updates from "expo-updates";
 
-const HeadBar = ({setloadlogin}) => {
-const [showModal, setShowModal]=useState(false)
+const HeadBar = ({ navigation }) => {
+  const [showModal, setShowModal] = useState(false);
 
   const pressCall = () => {
-    const url = "tel:123456789";
+    const url = "tel:+19705844550";
     Linking.openURL(url);
   };
 
   const clearAsyncStorage = () => {
     AsyncStorage.clear();
   };
+  async function reloadApp() {
+    await Updates.reloadAsync();
+  }
 
   const theModal = () => {
     return (
@@ -46,8 +50,9 @@ const [showModal, setShowModal]=useState(false)
               style={HeadBarStyles.btnmodal}
               onPress={() => {
                 clearAsyncStorage();
-                setloadlogin(true);
-                setShowModal(false)
+                setShowModal(false);
+                reloadApp();
+                // navigation.navigate("LogInPage");
               }}
             >
               <Text style={HeadBarStyles.textbtnmodal}>Yes</Text>

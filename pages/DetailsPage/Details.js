@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import {
-  ScrollView,
-  StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
   View,
+  BackHandler,
 } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import DetailsStyles from "./DetailsStyles";
@@ -14,7 +13,7 @@ import { Picker } from "@react-native-picker/picker";
 import DetailsPicker from "../../component/DetailsPicker";
 // import { useRoute } from "@react-navigation/native";
 
-const DetailsPage = ({setDetailsPage,setWorkPage,setloadlogin}) => {
+const DetailsPage = ({ navigation }) => {
   // const route = useRoute();
   const [value, setValue] = useState();
   const [details, setDetails] = useState({});
@@ -33,24 +32,20 @@ const DetailsPage = ({setDetailsPage,setWorkPage,setloadlogin}) => {
     obj["TruckNumber"] = text;
     setDetails({ ...details, ...obj });
   };
-
   const onPress = () => {
-    setDetailsPage(false);
-    setWorkPage(true)
-    // navigation.navigate(
-    //   "WorksPage"
-    //   // , details
-    // );
+    navigation.navigate("WorksPage");
   };
 
   return (
     <>
-      {/* {console.log(details)} */}
       <View style={{ marginTop: StatusBar.currentHieght || 30 }}>
-        <HeadBar setloadlogin={setloadlogin}/>
-        <View style={{ alignItems: "center", width:"100%" }}>
+        <HeadBar navigation={navigation} />
+        <View style={{ alignItems: "center", width: "100%" }}>
           {/* <Text>DETAILS</Text> */}
-          <Text style={{ marginTop: 10, color: "#003300", fontWeight:"bold" }}>TruckNumber</Text>
+          <Text style={{ marginTop: 10, color: "#003300", fontWeight: "bold" }}>
+            TruckNumber
+          </Text>
+
           <TextInput
             style={DetailsStyles.TextInput}
             onChangeText={(text) => onChangeText(text)}
@@ -60,7 +55,7 @@ const DetailsPage = ({setDetailsPage,setWorkPage,setloadlogin}) => {
           />
           <DetailsPicker
             theOption="TrucksTypes"
-            detail="TruckType"
+            detail="Truck Type"
             options={options}
             details={details}
             setDetails={setDetails}
@@ -103,7 +98,7 @@ const DetailsPage = ({setDetailsPage,setWorkPage,setloadlogin}) => {
           <TouchableOpacity
             style={{
               alignItems: "center",
-              marginTop: 10,
+              marginTop: 20,
               backgroundColor: "orange",
               borderRadius: 20,
               padding: 10,

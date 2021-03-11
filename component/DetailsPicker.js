@@ -15,32 +15,43 @@ const DetailsPicker = (props) => {
   const detailsObj = {};
   return (
     <View style={{ alignItems: "center" }}>
-      <Text style={{marginTop:10,color: "#003300", fontSize: 15, fontWeight:"bold"}}>
-        {detail}
-      </Text>
-      <View style={{
-         borderColor: "#000",
-         backgroundColor: "#ffffff",
-         borderWidth: 2,
-         width: 250,
-         borderRadius: 20,
-      }}>
-      <Picker
-        selectedValue={details[detail]}
+      <Text
         style={{
-          width: "80%",
-          height: 40,
-        }}
-        onValueChange={(itemValue, itemIndex) => {
-          detailsObj[detail] = itemValue;
-          setDetails({ ...details, ...detailsObj });
+          marginTop: 10,
+          color: "#003300",
+          fontSize: 15,
+          fontWeight: "bold",
         }}
       >
-        {options[theOption].map((option, index) => (
-          <Picker.Item label={option} value={option} key={index} />
-        ))}
-      </Picker>
-      </View> 
+        {detail}
+      </Text>
+      <View
+        style={{
+          borderColor: "#000",
+          backgroundColor: "#ffffff",
+          borderWidth: 1,
+          width: 250,
+          borderRadius: 10,
+          alignItems: "center",
+        }}
+      >
+        <Picker
+          selectedValue={details[detail]}
+          style={{
+            width: "80%",
+            height: 40,
+            alignItems: "center",
+          }}
+          onValueChange={(itemValue, itemIndex) => {
+            detailsObj[detail] = itemValue;
+            setDetails({ ...details, ...detailsObj });
+          }}
+        >
+          {options[theOption].map((option, index) => (
+            <Picker.Item label={option} value={option} key={index} />
+          ))}
+        </Picker>
+      </View>
     </View>
   );
 };

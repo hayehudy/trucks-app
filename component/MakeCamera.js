@@ -10,13 +10,13 @@ import { StatusBar } from "expo-status-bar";
 
 import { Camera } from "expo-camera";
 import * as Permissions from "expo-permissions";
-// import { useIsFocused } from "@react-navigation/native";
-// import { useRoute } from "@react-navigation/native";
+import { useIsFocused } from "@react-navigation/native";
+import { useRoute } from "@react-navigation/native";
 
-export default function MakeCamera({setCameraStart,setWorkPage,setTheCapturedImage}) {
+export default function MakeCamera({ navigation }) {
   const [hasPermission, setHasPermission] = useState(null);
   let cameraRef;
-  // const isFocused = useIsFocused();
+  const isFocused = useIsFocused();
   const [previewVisible, setPreviewVisible] = useState(false);
   const [capturedImage, setCapturedImage] = useState(null);
 
@@ -44,17 +44,14 @@ export default function MakeCamera({setCameraStart,setWorkPage,setTheCapturedIma
 
     const __savePicture = () => {
       setPreviewVisible(false);
-      setCameraStart(false);
-      setWorkPage(true);
-      setTheCapturedImage(capturedImage);
-      // navigation.navigate("WorksPage", capturedImage);
+      // setCameraStart(false);
+      // setWorkPage(true);
+      // setTheCapturedImage(capturedImage);
+      navigation.navigate("WorksPage", capturedImage);
     };
 
     return (
-      <View
-        style={{marginTop: StatusBar.currentHieght || 30,
-        }}
-      >
+      <View style={{ marginTop: StatusBar.currentHieght || 30 }}>
         <View
           style={{
             width: "100%",
@@ -127,53 +124,55 @@ export default function MakeCamera({setCameraStart,setWorkPage,setTheCapturedIma
       {previewVisible && capturedImage ? (
         <CameraPreview photo={capturedImage} />
       ) : (
-        
-          <View style={{ flex: 1, marginTop: 30 }}>
-      {/* {isFocused&&( */}
-      <Camera autoFocus={"on"} style={{ flex: 1 }} ref={(ref) => (cameraRef = ref)}>
+        <View style={{ flex: 1, marginTop: 30 }}>
+          {/* {isFocused&&( */}
+          <Camera
+            autoFocus={"on"}
+            style={{ flex: 1 }}
+            ref={(ref) => (cameraRef = ref)}
+          >
+            <View
+              style={{
+                flex: 1,
+                width: "100%",
+                backgroundColor: "transparent",
+                flexDirection: "row",
+              }}
+            >
               <View
                 style={{
+                  position: "absolute",
+                  bottom: 0,
+                  flexDirection: "row",
                   flex: 1,
                   width: "100%",
-                  backgroundColor: "transparent",
-                  flexDirection: "row",
+                  padding: 20,
+                  justifyContent: "space-between",
                 }}
               >
                 <View
                   style={{
-                    position: "absolute",
-                    bottom: 0,
-                    flexDirection: "row",
+                    alignSelf: "center",
                     flex: 1,
-                    width: "100%",
-                    padding: 20,
-                    justifyContent: "space-between",
+                    alignItems: "center",
                   }}
                 >
-                  <View
+                  <TouchableOpacity
+                    onPress={takePicture}
                     style={{
-                      alignSelf: "center",
-                      flex: 1,
-                      alignItems: "center",
+                      width: 70,
+                      height: 70,
+                      bottom: 0,
+                      borderRadius: 50,
+                      backgroundColor: "#fff",
                     }}
-                  >
-                    <TouchableOpacity
-                      onPress={takePicture}
-                      style={{
-                        width: 70,
-                        height: 70,
-                        bottom: 0,
-                        borderRadius: 50,
-                        backgroundColor: "#fff",
-                      }}
-                    />
-                  </View>
+                  />
                 </View>
               </View>
-            </Camera>
-            {/* )} */}
-          </View>
-        
+            </View>
+          </Camera>
+          {/* )} */}
+        </View>
       )}
     </>
   );

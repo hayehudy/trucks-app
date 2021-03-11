@@ -4,12 +4,11 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  TouchableHighlight,
   View,
   Alert,
   Modal,
   Image,
-  BackHandler
+  BackHandler,
 } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import WorksStyles from "./WorksStyles";
@@ -18,15 +17,14 @@ import DetailsOfWork from "../DetailsOfWorkPage/DetailsOfWork";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const WorksPage = ({setCameraStart, setWorkPage,theCapturedImage,setloadlogin}) => {
+const WorksPage = ({ route, navigation }) => {
   const [show, setShow] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [works, setWorks] = useState([]);
   const [status, setStatus] = useState();
-  const [loads, setLoads] = useState();
   const [currentWork, setCurrentWork] = useState({});
-  // const details = route.params;
-  const capturedImage = theCapturedImage;
+  const details = route.params;
+  const capturedImage = route.params;
   const [image, setImage] = useState();
   const [imageStyle, setImageStyle] = useState({
     width: 50,
@@ -34,7 +32,7 @@ const WorksPage = ({setCameraStart, setWorkPage,theCapturedImage,setloadlogin}) 
     marginTop: -15,
   });
 
-  useEffect(() => {   
+  useEffect(() => {
     if (capturedImage) {
       console.log("o ye!");
       // console.log(capturedImage);
@@ -71,38 +69,44 @@ const WorksPage = ({setCameraStart, setWorkPage,theCapturedImage,setloadlogin}) 
           Alert.alert("Modal has been closed.");
         }}
       >
-          <View style={WorksStyles.modalView}>
-          {status==="remove"?
-          (<Text style={WorksStyles.modaltext}>
-            Tons or Load - {currentWork.TonsOrLoad},{"\n"}Product -
-            {currentWork.Product} {"\n"}
-            Remove this row?
-          </Text>):(<Text style={WorksStyles.modaltext}>Are you sure you want to exit the app?</Text>)}
+        <View style={WorksStyles.modalView}>
+          {status === "remove" ? (
+            <Text style={WorksStyles.modaltext}>
+              Tons or Load - {currentWork.TonsOrLoad},{"\n"}Product -
+              {currentWork.Product} {"\n"}
+              Remove this row?
+            </Text>
+          ) : (
+            <Text style={WorksStyles.modaltext}>
+              Are you sure you want to exit the app?
+            </Text>
+          )}
           <View style={WorksStyles.btnmodalView}>
-          
-            <TouchableHighlight
+            <TouchableOpacity
               style={WorksStyles.btnmodal}
               onPress={() => {
-                if (status==="remove"){
-                let theWorks = works;
-                let theNewWorks = theWorks.filter(
-                  (x, ind) => ind !== currentWork.index
-                );
-                setWorks(theNewWorks);
-                setShowModal(false)}
-                  else {BackHandler.exitApp()}
+                if (status === "remove") {
+                  let theWorks = works;
+                  let theNewWorks = theWorks.filter(
+                    (x, ind) => ind !== currentWork.index
+                  );
+                  setWorks(theNewWorks);
+                  setShowModal(false);
+                } else {
+                  BackHandler.exitApp();
+                }
               }}
             >
               <Text style={WorksStyles.textbtnmodal}>Yes</Text>
-            </TouchableHighlight>
-            <TouchableHighlight
+            </TouchableOpacity>
+            <TouchableOpacity
               style={WorksStyles.btnmodal}
               onPress={() => {
                 setShowModal(false);
               }}
             >
               <Text style={WorksStyles.textbtnmodal}>No</Text>
-            </TouchableHighlight>
+            </TouchableOpacity>
           </View>
         </View>
       </Modal>
@@ -114,28 +118,26 @@ const WorksPage = ({setCameraStart, setWorkPage,theCapturedImage,setloadlogin}) 
       <View
         style={{
           marginTop: StatusBar.currentHieght || 30,
-          marginBottom:60
+          marginBottom: 60,
         }}
       >
-        <HeadBar setloadlogin={setloadlogin}/>
+        <HeadBar navigation={navigation} />
 
-        <View style={{ height: "100%"}}>
+        <View style={{ height: "100%" }}>
           {show && (
             <DetailsOfWork
               works={works}
               setWorks={setWorks}
               setShow={setShow}
               image={image}
-              setCameraStart={setCameraStart}
-              setWorkPage={setWorkPage}
-              // navigation={navigation}
+              navigation={navigation}
             />
           )}
 
           <View
             style={{
               marginBottom: 20,
-              flex: 0.8,
+              flex: 0.9,
             }}
           >
             <Text style={WorksStyles.headertext}>DAILY LOADS</Text>
@@ -150,7 +152,7 @@ const WorksPage = ({setCameraStart, setWorkPage,theCapturedImage,setloadlogin}) 
               </View>
 
               <View style={WorksStyles.row3}>
-              <Text style={WorksStyles.titleheader}>Ticket</Text>
+                <Text style={WorksStyles.titleheader}>Ticket</Text>
               </View>
 
               <View style={WorksStyles.row4} />
@@ -196,19 +198,25 @@ const WorksPage = ({setCameraStart, setWorkPage,theCapturedImage,setloadlogin}) 
             </ScrollView>
           </View>
 
-          <TheModal/>
+          <TheModal />
 
-          <View>
-            <TouchableOpacity style={WorksStyles.btn} onPress={onPress}>
-              <Text style={WorksStyles.textbtn}>Add Load</Text>
-            </TouchableOpacity>
+          <View style={WorksStyles.btnView}>
+            <View style={WorksStyles.btn}>
+              <TouchableOpacity onPress={onPress}>
+                <Text style={WorksStyles.textbtn}>Add Load</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={WorksStyles.btn}>
+              <TouchableOpacity
+                onPress={() => {
+                  setStatus("exit");
+                  setShowModal(true);
+                }}
+              >
+                <Text style={WorksStyles.textbtn}>End The Day</Text>
+              </TouchableOpacity>
+            </View>
           </View>
-          <View>
-            <TouchableOpacity style={WorksStyles.btn} onPress={()=>{setStatus("exit"); setShowModal(true)}}>
-              <Text style={WorksStyles.textbtn}>End The Day</Text>
-            </TouchableOpacity>
-          </View>
-          
         </View>
       </View>
     </>

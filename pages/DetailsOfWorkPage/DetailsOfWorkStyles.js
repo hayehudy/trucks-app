@@ -6,12 +6,11 @@ const DetailsOfWorkStyles = StyleSheet.create({
   },
 
   background: {
-    marginTop: 30,
+    marginTop: 20,
     alignItems: "center",
     alignSelf: "center",
     backgroundColor: "#cccccc",
     width: "90%",
-    height: 500,
     borderRadius: 50,
   },
 
@@ -36,7 +35,7 @@ const DetailsOfWorkStyles = StyleSheet.create({
     backgroundColor: "#ffffff",
     borderRadius: 20,
     width: "80%",
-    height: 50,
+    height: 45,
     borderWidth: 2,
   },
 

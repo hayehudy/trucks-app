@@ -6,7 +6,7 @@ import HeadBar from "../../component/HeadBar";
 import * as Location from "expo-location";
 import MapView, { Marker } from "react-native-maps";
 
-const StartPage = ({ setDetailsPage,setStart,setloadlogin }) => {
+const StartPage = ({ navigation }) => {
   const [startTime, setStartTime] = useState("");
   const [latitude, setLatitude] = useState("");
   const [longitude, setLongitude] = useState("");
@@ -82,16 +82,12 @@ const StartPage = ({ setDetailsPage,setStart,setloadlogin }) => {
     `);
     setTextLocation(textlocation);
     setMap(mapview);
-    setTimeout(() => {
-      setStart(false)
-      setDetailsPage(true)
-      // navigation.navigate("DetailsPage");
-    }, 5000);
+    navigation.navigate("DetailsPage");
   };
 
   return (
     <View style={{ marginTop: StatusBar.currentHieght || 30 }}>
-      <HeadBar setloadlogin={setloadlogin}/>
+      <HeadBar navigation={navigation} />
       <View style={StartStyles.container}>
         <TouchableOpacity onPress={onPress} style={StartStyles.Btnstart}>
           <Text style={StartStyles.loginText}>Start The Day</Text>

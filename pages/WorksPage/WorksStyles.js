@@ -58,25 +58,24 @@ const WorksStyles = StyleSheet.create({
   },
 
   btn: {
-    marginBottom:15,
+    marginBottom: 15,
     alignSelf: "center",
     alignItems: "center",
     backgroundColor: "orange",
     borderRadius: 20,
-    width: "60%",
+    width: "45%",
     height: 50,
     justifyContent: "center",
   },
   textbtn: {
     color: "red",
-    fontSize: 30,
+    fontSize: 20,
     fontWeight: "bold",
   },
 
   modalView: {
     backgroundColor: "#fff",
     width: "80%",
-    height: "100%",
     borderRadius: 20,
     borderWidth: 2,
     padding: 20,
@@ -91,6 +90,16 @@ const WorksStyles = StyleSheet.create({
     color: "#000",
     lineHeight: 40,
     textAlign: "center",
+  },
+
+  btnView: {
+    // marginTop: 20,
+    flexDirection: "row",
+    paddingLeft: 20,
+    paddingRight: 20,
+    height: 80,
+    width: "100%",
+    justifyContent: "space-between",
   },
 
   btnmodalView: {
@@ -115,7 +124,6 @@ const WorksStyles = StyleSheet.create({
     color: "#fff",
     fontWeight: "bold",
   },
-  
 });
 
 export default WorksStyles;
