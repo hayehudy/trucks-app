@@ -59,7 +59,7 @@ const DetailsPage = ({ navigation }) => {
           />
           <DetailsPicker
             theOption="TrucksTypes"
-            detail="Truck Type"
+            detail="TruckType"
             options={options}
             details={details}
             setDetails={setDetails}

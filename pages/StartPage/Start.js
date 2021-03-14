@@ -5,6 +5,7 @@ import StartStyles from "./StartStyles";
 import HeadBar from "../../component/HeadBar";
 import * as Location from "expo-location";
 import MapView, { Marker } from "react-native-maps";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const StartPage = ({ navigation }) => {
   const [startTime, setStartTime] = useState("");
@@ -80,6 +81,13 @@ const StartPage = ({ navigation }) => {
       hours < 10 ? "0" + hours : hours
     }:${minutes < 10 ? "0" + minutes : minutes}
     `);
+    let theStartTime=JSON.stringify(`${days[new Date().getDay()]}     ${
+      date < 10 ? "0" + date : date
+    }/${month < 10 ? "0" + month : month}/${new Date().getFullYear()}     ${
+      hours < 10 ? "0" + hours : hours
+    }:${minutes < 10 ? "0" + minutes : minutes}
+    `);
+    await AsyncStorage.setItem("startTime",theStartTime)
     setTextLocation(textlocation);
     setMap(mapview);
     navigation.navigate("DetailsPage");

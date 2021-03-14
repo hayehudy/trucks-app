@@ -18,15 +18,20 @@ import DetailsOfWork from "../DetailsOfWorkPage/DetailsOfWork";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ThemeProvider } from "@react-navigation/native";
+import { getPixelSizeForLayoutSize } from "react-native/Libraries/Utilities/PixelRatio";
+import DaySummary from "../DaySummary/DaySummary";
 
 const WorksPage = ({ route, navigation }) => {
+  const [endTime,setEndTime]=useState();
+  const [startTime,setStartTime]=useState();
+  const [details,setDetails]=useState({});
   const [notFirstTime,setNotFirstTime]=useState(false);
   const [show, setShow] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [jobs,setJobs]=useState([]);
   const [status, setStatus] = useState();
   const [currentWork, setCurrentWork] = useState({});
-  const details = route.params;
+  // const details = route.params;
   const capturedImage = route.params;
   const [image, setImage] = useState();
   const [imageStyle, setImageStyle] = useState({
@@ -34,6 +39,22 @@ const WorksPage = ({ route, navigation }) => {
     height: 60,
     marginTop: -15,
   });
+  const [summary,setSummary]=useState(false)
+
+  const month = new Date().getMonth() + 1;
+      const date = new Date().getDate();
+      const hours = new Date().getHours();
+      const minutes = new Date().getMinutes();
+    
+      const days = [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ];
 
   useEffect(() => {
     if (capturedImage) {
@@ -135,6 +156,12 @@ const WorksPage = ({ route, navigation }) => {
               setJobs={setJobs}
             />
           )}
+          {summary&&<DaySummary
+          jobs={jobs}
+          setJobs={ setJobs}
+          startTime={startTime}
+          endTime={endTime}
+          details={details}/>}
 
           <View
             style={{
@@ -210,15 +237,36 @@ const WorksPage = ({ route, navigation }) => {
             </View>
             <View style={WorksStyles.btn}>
               <TouchableOpacity
-                onPress={() => {
-                  setStatus("exit");
-                  setShowModal(true);
+                onPress={async() => {
+                  let theEndTime=JSON.stringify(`${days[new Date().getDay()]}     ${
+                    date < 10 ? "0" + date : date
+                  }/${month < 10 ? "0" + month : month}/${new Date().getFullYear()}     ${
+                    hours < 10 ? "0" + hours : hours
+                  }:${minutes < 10 ? "0" + minutes : minutes}
+                  `);
+                  await AsyncStorage.setItem("endTime",theEndTime);
+                  await setEndTime(`${days[new Date().getDay()]}     ${
+                    date < 10 ? "0" + date : date
+                  }/${month < 10 ? "0" + month : month}/${new Date().getFullYear()}     ${
+                    hours < 10 ? "0" + hours : hours
+                  }:${minutes < 10 ? "0" + minutes : minutes}
+                  `);
+                  let theStartTime=await AsyncStorage.getItem("startTime");
+                  let theStartTime1=JSON.parse(theStartTime);
+                  setStartTime(theStartTime1);
+                  let theDetails=await AsyncStorage.getItem("details");
+                  let theDetails1=JSON.parse(theDetails);
+                  setDetails(theDetails1);
+                  console.log(details);
+                  console.log(theStartTime1)
+                  setSummary(true);
                 }}
               >
-                <Text style={WorksStyles.textbtn}>End The Day</Text>
+                <Text style={WorksStyles.textbtn}>End The Job</Text>
               </TouchableOpacity>
             </View>
           </View>
+          
         </View>
       </View>
     </>
