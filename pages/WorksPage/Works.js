@@ -10,6 +10,7 @@ import {
   Image,
   BackHandler,
 } from "react-native";
+import * as Updates from "expo-updates";
 import { StatusBar } from "expo-status-bar";
 import WorksStyles from "./WorksStyles";
 import HeadBar from "../../component/HeadBar";
@@ -91,7 +92,10 @@ const WorksPage = ({ route, navigation }) => {
                   await AsyncStorage.setItem("loads",newJobs);
                   setShowModal(false);
                 } else {
-                  BackHandler.exitApp();
+                  await AsyncStorage.removeItem("loads");
+                  await AsyncStorage.removeItem("details");
+                  await Updates.reloadAsync();
+                  // setShowModal(false);
                 }
               }}
             >

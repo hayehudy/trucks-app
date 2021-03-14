@@ -16,6 +16,7 @@ import * as Location from "expo-location";
 export default function App() {
   const Drawer = createDrawerNavigator();
   const [loadlogin, setloadlogin] = useState(true);
+  const [fullDetails,setFullDetails]=useState(false);
 
   useEffect(() => {
     (async () => {
@@ -31,6 +32,12 @@ export default function App() {
       }
     })();
   }, []);
+
+  useEffect(()=>{
+    (async () => {
+    const storageDetails=await AsyncStorage.getItem("details");
+      if (storageDetails) {setFullDetails(true)}})()},[]
+  )
 
   const textDrawer = {
     fontWeight: "700",
@@ -67,7 +74,7 @@ export default function App() {
             }}
           />
         )}
-        <Drawer.Screen
+        {!fullDetails&&(<Drawer.Screen
           name="StartPage"
           component={StartPage}
           options={{
@@ -78,8 +85,8 @@ export default function App() {
               <Icon name="power-off" size={30} />
             ),
           }}
-        />
-        <Drawer.Screen
+        />)}
+        {!fullDetails&&(<Drawer.Screen
           name="DetailsPage"
           component={DetailsPage}
           options={{
@@ -95,7 +102,7 @@ export default function App() {
               <Iconmaterial name="card-text" size={30} />
             ),
           }}
-        />
+        />)}
         <Drawer.Screen
           name="WorksPage"
           component={WorksPage}
