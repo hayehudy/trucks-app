@@ -16,6 +16,7 @@ import HeadBar from "../../component/HeadBar";
 import DetailsOfWork from "../DetailsOfWorkPage/DetailsOfWork";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import * as Updates from "expo-updates";
 
 const WorksPage = ({ route, navigation }) => {
   const [show, setShow] = useState(false);
@@ -58,6 +59,10 @@ const WorksPage = ({ route, navigation }) => {
     setShow(true);
     setImage();
   };
+
+  async function reloadApp() {
+    await Updates.reloadAsync();
+  }
 
   const TheModal = () => {
     return (

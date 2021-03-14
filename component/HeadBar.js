@@ -26,6 +26,7 @@ const HeadBar = ({ navigation }) => {
   const clearAsyncStorage = () => {
     AsyncStorage.clear();
   };
+
   async function reloadApp() {
     await Updates.reloadAsync();
   }
@@ -36,13 +37,13 @@ const HeadBar = ({ navigation }) => {
         animationType="slide"
         transparent={true}
         visible={showModal}
-        onRequestClose={() => {
-          Alert.alert("Modal has been closed.");
-        }}
+        // onRequestClose={() => {
+        //   Alert.alert("Modal has been closed.");
+        // }}
       >
         <View style={HeadBarStyles.modalView}>
           <Text style={HeadBarStyles.modaltext}>
-            Do you want {"\n"}to switch users?{" "}
+            You're sure you want{"\n"}to logout?{" "}
           </Text>
 
           <View style={HeadBarStyles.btnmodalView}>
