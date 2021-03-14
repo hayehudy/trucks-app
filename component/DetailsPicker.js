@@ -25,7 +25,7 @@ const DetailsPicker = (props) => {
       >
         {detail}
       </Text>
-      <View
+      {/* <View
         style={{
           borderColor: "#000",
           backgroundColor: "#ffffff",
@@ -34,14 +34,26 @@ const DetailsPicker = (props) => {
           borderRadius: 10,
           alignItems: "center",
         }}
-      >
-        <Picker
+      > */}
+      <View style={Style.pickerWrapper}>
+      <Icon
+        name="arrow-drop-down"
+        type="MaterialIcons"
+        style={Style.pickerIcon}
+      />
+      <Picker
+        mode="dropdown"
+        style={Style.pickerContent}
+        placeholder=""
+        placeholderStyle={{ color: "white" }}
+        placeholderIconColor={"white"}
+        // <Picker
           selectedValue={details[detail]}
-          style={{
-            width: "80%",
-            height: 40,
-            alignItems: "center",
-          }}
+          // style={{
+          //   width: "80%",
+          //   height: 40,
+          //   alignItems: "center",
+          // }}
           onValueChange={(itemValue, itemIndex) => {
             detailsObj[detail] = itemValue;
             setDetails({ ...details, ...detailsObj });
@@ -56,3 +68,29 @@ const DetailsPicker = (props) => {
   );
 };
 export default DetailsPicker;
+
+const Style = StyleSheet.create({
+pickerWrapper: {
+  borderRadius: 10,
+  width: 250,
+  height:40,
+  borderColor: "#000000",
+  borderWidth: 1,
+  backgroundColor: "white",
+  flexDirection:"row"
+},
+pickerIcon: {
+  color: "red",
+  position: "absolute",
+  bottom: 15,
+  right: 10,
+  fontSize: 20,
+  width: "10%"
+},
+
+pickerContent: {
+  // width:"80%",
+  color: "#000000",
+  backgroundColor: "transparent",
+  width: "90%"
+},})
