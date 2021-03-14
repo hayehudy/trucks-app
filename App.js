@@ -16,6 +16,7 @@ import StartPage from "./pages/StartPage/Start";
 import DetailsPage from "./pages/DetailsPage/Details";
 import WorksPage from "./pages/WorksPage/Works";
 import makeCamera from "./component/MakeCamera";
+import sendLocation from "./pages/send location/sendLocation";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import Iconmaterial from "react-native-vector-icons/MaterialCommunityIcons";
@@ -139,6 +140,18 @@ export default function App() {
             }}
           />
         )}
+        <Drawer.Screen
+          name="sendLocation"
+          component={sendLocation}
+          options={{
+            gestureEnabled: false,
+
+            title: "Start",
+            drawerIcon: ({ focused, size }) => (
+              <Icon name="power-off" size={30} />
+            ),
+          }}
+        />
         <Drawer.Screen
           name="StartPage"
           component={StartPage}

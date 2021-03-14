@@ -18,7 +18,8 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 const DetailsOfWork = (props) => {
   const { navigation } = props;
   const { setWorkPage, setCameraStart } = props;
-  const { works, setWorks, setShow, image } = props;
+  const {jobs,setJobs}=props;
+  const {setShow, image } = props;
   const products = ["apple", "banana", "egg"];
   const [theDetails, setTheDetails] = useState({});
   const [value, setValue] = useState();
@@ -38,10 +39,15 @@ const DetailsOfWork = (props) => {
     setTheDetails({ ...theDetails, ...obj });
   };
 
-  const onPress = () => {
-    let theWorks = works;
-    theWorks.push(theDetails);
-    setWorks(theWorks);
+  const onPress = async () => {
+    let theJobs=jobs;
+    theJobs.push(theDetails);
+    await setJobs(theJobs);
+    const newJobs=JSON.stringify(jobs);
+    await AsyncStorage.setItem("loads",newJobs);
+    // let theWorks = works;
+    // theWorks.push(theDetails);
+    // setWorks(theWorks);
     setShow(false);
   };
 

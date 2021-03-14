@@ -54,6 +54,18 @@ const sendLocation = ({ navigation }) => {
     }:${minutes < 10 ? "0" + minutes : minutes}
   `);
 
+    // as();
+    // setInterval(() => {
+    //   setCartproduct([
+    //     ...cartproduct,
+    //     {
+    //       a: "sssssss",
+    //       // b: textLocation,
+    //       // c: { map },
+    //     },
+    //   ]);
+    // }, 3000);
+
     setInterval(() => {
       async () => {
         let location = await Location.getCurrentPositionAsync({});
@@ -64,58 +76,71 @@ const sendLocation = ({ navigation }) => {
     }, 3000);
   }, []);
 
-  const aaa = async () => {
-    await setCartproduct([
-      ...cartproduct,
-      {
-        a: startTime,
-        b: textLocation,
-        // c: { map },
-      },
-    ]);
-  };
+  // const aaa = async () => {
+  //   await setCartproduct([
+  //     ...cartproduct,
+  //     {
+  //       a: startTime,
+  //       b: textLocation,
+  //       // c: { map },
+  //     },
+  //   ]);
+  // };
 
-  const as = () => {
-    setInterval(() => {
-      <Text>{startTime}</Text>;
-    }, 3000);
-  };
-  {
-    setInterval(() => {
-      {
-        new Date();
-      }
-    }, 3000);
-  }
+  // const as = () => {
+  //   setInterval(() => {
+  //     setCartproduct([
+  //       ...cartproduct,
+  //       {
+  //         a: startTime,
+  //         b: textLocation,
+  //         // c: { map },
+  //       },
+  //     ]);
+  //   }, 3000);
+  // };
+  // {
+  //   setInterval(() => {
+  //     {
+  //       new Date();
+  //     }
+  //   }, 3000);
+  // }
 
-  const mapview = (
-    <MapView
-      style={{ height: 150, width: 300 }}
-      initialRegion={{
-        // latitude: 31.8800332,
-        // longitude: 35.2398698,
-        latitude: latitude ? latitude : 0,
-        longitude: longitude ? longitude : 0,
-        latitudeDelta: 0.00292,
-        longitudeDelta: 0.00242,
-      }}
-    >
-      <Marker
-        coordinate={{
-          latitude: latitude ? latitude : 0,
-          longitude: longitude ? longitude : 0,
-        }}
-      />
-    </MapView>
-  );
+  // const mapview = (
+  //   <MapView
+  //     style={{ height: 150, width: 300 }}
+  //     initialRegion={{
+  //       // latitude: 31.8800332,
+  //       // longitude: 35.2398698,
+  //       latitude: latitude ? latitude : 0,
+  //       longitude: longitude ? longitude : 0,
+  //       latitudeDelta: 0.00292,
+  //       longitudeDelta: 0.00242,
+  //     }}
+  //   >
+  //     <Marker
+  //       coordinate={{
+  //         latitude: latitude ? latitude : 0,
+  //         longitude: longitude ? longitude : 0,
+  //       }}
+  //     />
+  //   </MapView>
+  // );
 
   const onPress = () => {
-    setStartTime(`${days[new Date().getDay()]}     ${
-      date < 10 ? "0" + date : date
-    }/${month < 10 ? "0" + month : month}/${new Date().getFullYear()}     ${
-      hours < 10 ? "0" + hours : hours
-    }:${minutes < 10 ? "0" + minutes : minutes}
-  `);
+    setCartproduct([
+      ...cartproduct,
+      {
+        a: "jjjjjj",
+        //       `${days[new Date().getDay()]}     ${date < 10 ? "0" + date : date}/${
+        //         month < 10 ? "0" + month : month
+        //       }/${new Date().getFullYear()}     ${hours < 10 ? "0" + hours : hours}:${
+        //         minutes < 10 ? "0" + minutes : minutes
+        //       }
+        // `,
+      },
+    ]);
     // setTextLocation(textlocation);
     // setMap(mapview);
   };
@@ -130,17 +155,17 @@ const sendLocation = ({ navigation }) => {
           {startTime}
           {textLocation}
         </Text>
-        {/* <TouchableOpacity onPress={onPress}>
+        <TouchableOpacity onPress={onPress}>
           <Text>vvvvv</Text>
-        </TouchableOpacity> */}
+        </TouchableOpacity>
 
-        {map}
+        {/* {map} */}
       </View>
       {cartproduct.map((work, index) => (
         <View key={index}>
           <View style={{ height: 50, width: 300 }}>
             <Text>{work.a}</Text>
-            <Text>{work.b}</Text>
+            {/* <Text>{work.b}</Text> */}
           </View>
         </View>
       ))}
