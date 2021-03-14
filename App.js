@@ -28,6 +28,8 @@ export default function App() {
   const Drawer = createDrawerNavigator();
   const [loadlogin, setloadlogin] = useState(true);
   const [showModal, setShowModal] = useState(false);
+  const [fullDetails, setFullDetails] = useState(false);
+
   useEffect(() => {
     const backAction = () => {
       Alert.alert("", "Are you sure you want to exit?", [
@@ -105,6 +107,15 @@ export default function App() {
     })();
   }, []);
 
+  useEffect(() => {
+    (async () => {
+      const storageDetails = await AsyncStorage.getItem("details");
+      if (storageDetails) {
+        setFullDetails(true);
+      }
+    })();
+  }, []);
+
   const textDrawer = {
     fontWeight: "700",
     fontSize: 20,
@@ -140,7 +151,7 @@ export default function App() {
             }}
           />
         )}
-        <Drawer.Screen
+        {/* <Drawer.Screen
           name="sendLocation"
           component={sendLocation}
           options={{
@@ -151,36 +162,40 @@ export default function App() {
               <Icon name="power-off" size={30} />
             ),
           }}
-        />
-        <Drawer.Screen
-          name="StartPage"
-          component={StartPage}
-          options={{
-            gestureEnabled: false,
+        /> */}
+        {!fullDetails && (
+          <Drawer.Screen
+            name="StartPage"
+            component={StartPage}
+            options={{
+              gestureEnabled: false,
 
-            title: "Start",
-            drawerIcon: ({ focused, size }) => (
-              <Icon name="power-off" size={30} />
-            ),
-          }}
-        />
-        <Drawer.Screen
-          name="DetailsPage"
-          component={DetailsPage}
-          options={{
-            gestureEnabled: false,
-            headerLeft: null,
-            gesturesEnabled: false,
-            headerBackTitle: null,
-            header: {
-              visible: false,
-            },
-            title: "Details",
-            drawerIcon: ({ focused, size }) => (
-              <Iconmaterial name="card-text" size={30} />
-            ),
-          }}
-        />
+              title: "Start",
+              drawerIcon: ({ focused, size }) => (
+                <Icon name="power-off" size={30} />
+              ),
+            }}
+          />
+        )}
+        {!fullDetails && (
+          <Drawer.Screen
+            name="DetailsPage"
+            component={DetailsPage}
+            options={{
+              gestureEnabled: false,
+              headerLeft: null,
+              gesturesEnabled: false,
+              headerBackTitle: null,
+              header: {
+                visible: false,
+              },
+              title: "Details",
+              drawerIcon: ({ focused, size }) => (
+                <Iconmaterial name="card-text" size={30} />
+              ),
+            }}
+          />
+        )}
         <Drawer.Screen
           name="WorksPage"
           component={WorksPage}

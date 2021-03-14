@@ -11,6 +11,7 @@ import DetailsStyles from "./DetailsStyles";
 import HeadBar from "../../component/HeadBar";
 import { Picker } from "@react-native-picker/picker";
 import DetailsPicker from "../../component/DetailsPicker";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 // import { useRoute } from "@react-navigation/native";
 
 const DetailsPage = ({ navigation }) => {
@@ -32,7 +33,9 @@ const DetailsPage = ({ navigation }) => {
     obj["TruckNumber"] = text;
     setDetails({ ...details, ...obj });
   };
-  const onPress = () => {
+  const onPress = async () => {
+    const theDetails = JSON.stringify(details);
+    await AsyncStorage.setItem("details", theDetails);
     navigation.navigate("WorksPage");
   };
 

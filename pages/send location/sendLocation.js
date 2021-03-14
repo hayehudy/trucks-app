@@ -12,7 +12,7 @@ const sendLocation = ({ navigation }) => {
   const [longitude, setLongitude] = useState("");
   const [textLocation, setTextLocation] = useState("");
   const [map, setMap] = useState();
-  const [cartproduct, setCartproduct] = useState([]);
+  const [cartproduct, setCartproduct] = useState([{ a: "jjjjjj" }]);
   const [errorMsg, setErrorMsg] = useState(null);
 
   const month = new Date().getMonth() + 1;
@@ -47,33 +47,33 @@ const sendLocation = ({ navigation }) => {
   // };
 
   useEffect(() => {
-    setStartTime(`${days[new Date().getDay()]}     ${
-      date < 10 ? "0" + date : date
-    }/${month < 10 ? "0" + month : month}/${new Date().getFullYear()}     ${
-      hours < 10 ? "0" + hours : hours
-    }:${minutes < 10 ? "0" + minutes : minutes}
+    setInterval(() => {
+      setStartTime(`${days[new Date().getDay()]}     ${
+        date < 10 ? "0" + date : date
+      }/${month < 10 ? "0" + month : month}/${new Date().getFullYear()}     ${
+        hours < 10 ? "0" + hours : hours
+      }:${minutes < 10 ? "0" + minutes : minutes}
   `);
 
-    // as();
-    // setInterval(() => {
-    //   setCartproduct([
-    //     ...cartproduct,
-    //     {
-    //       a: "sssssss",
-    //       // b: textLocation,
-    //       // c: { map },
-    //     },
-    //   ]);
-    // }, 3000);
-
-    setInterval(() => {
-      async () => {
-        let location = await Location.getCurrentPositionAsync({});
-        setLatitude(location.coords.latitude);
-        setLongitude(location.coords.longitude);
-        setTextLocation(textlocationaa);
-      };
+      // as();
+      setCartproduct([
+        ...cartproduct,
+        {
+          a: "startTime",
+          // b: textLocation,
+          // c: { map },
+        },
+      ]);
     }, 3000);
+
+    // setInterval(() => {
+    //   async () => {
+    //     let location = await Location.getCurrentPositionAsync({});
+    //     setLatitude(location.coords.latitude);
+    //     setLongitude(location.coords.longitude);
+    //     setTextLocation(textlocationaa);
+    //   };
+    // }, 3000);
   }, []);
 
   // const aaa = async () => {
@@ -148,22 +148,22 @@ const sendLocation = ({ navigation }) => {
   return (
     <View style={{ marginTop: StatusBar.currentHieght || 30 }}>
       <HeadBar navigation={navigation} />
-      <View style={sendLocationStyle.container}>
+      <View>
         <Text>
           {"\n"}
           sssss
           {startTime}
           {textLocation}
         </Text>
-        <TouchableOpacity onPress={onPress}>
-          <Text>vvvvv</Text>
-        </TouchableOpacity>
 
         {/* {map} */}
       </View>
+      <TouchableOpacity onPress={onPress}>
+        <Text>vvvvv</Text>
+      </TouchableOpacity>
       {cartproduct.map((work, index) => (
-        <View key={index}>
-          <View style={{ height: 50, width: 300 }}>
+        <View key={index} style={{ height: 20, width: 300 }}>
+          <View>
             <Text>{work.a}</Text>
             {/* <Text>{work.b}</Text> */}
           </View>

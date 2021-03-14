@@ -28,7 +28,7 @@ const DetailsOfWorkStyles = StyleSheet.create({
   },
 
   TextInput: {
-    padding: 15,
+    // padding: 15,
     fontSize: 20,
     fontWeight: "bold",
     marginTop: 10,
@@ -37,6 +37,7 @@ const DetailsOfWorkStyles = StyleSheet.create({
     width: "80%",
     height: 45,
     borderWidth: 2,
+    textAlign: "center",
   },
 
   picker: {

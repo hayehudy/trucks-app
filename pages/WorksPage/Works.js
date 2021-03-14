@@ -10,6 +10,7 @@ import {
   Image,
   BackHandler,
 } from "react-native";
+import * as Updates from "expo-updates";
 import { StatusBar } from "expo-status-bar";
 import WorksStyles from "./WorksStyles";
 import HeadBar from "../../component/HeadBar";
@@ -17,7 +18,6 @@ import DetailsOfWork from "../DetailsOfWorkPage/DetailsOfWork";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ThemeProvider } from "@react-navigation/native";
-import * as Updates from "expo-updates";
 
 const WorksPage = ({ route, navigation }) => {
   const [notFirstTime, setNotFirstTime] = useState(false);
@@ -71,9 +71,9 @@ const WorksPage = ({ route, navigation }) => {
         animationType="slide"
         transparent={true}
         visible={showModal}
-        onRequestClose={() => {
-          Alert.alert("Modal has been closed.");
-        }}
+        // onRequestClose={() => {
+        //   Alert.alert("Modal has been closed.");
+        // }}
       >
         <View style={WorksStyles.modalView}>
           {status === "remove" ? (
@@ -101,7 +101,10 @@ const WorksPage = ({ route, navigation }) => {
                   await AsyncStorage.setItem("loads", newJobs);
                   setShowModal(false);
                 } else {
-                  BackHandler.exitApp();
+                  await AsyncStorage.removeItem("loads");
+                  await AsyncStorage.removeItem("details");
+                  await Updates.reloadAsync();
+                  // setShowModal(false);
                 }
               }}
             >
