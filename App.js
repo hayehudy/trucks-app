@@ -145,8 +145,6 @@ export default function App() {
             options={{
               gestureEnabled: false,
               drawerLabel: () => null,
-              // title: null,
-              // drawerIcon: () => null,
               unmountOnBlur: true,
             }}
           />
