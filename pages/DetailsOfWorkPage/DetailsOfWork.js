@@ -21,7 +21,7 @@ const DetailsOfWork = (props) => {
   const { setWorkPage, setCameraStart } = props;
   const { jobs, setJobs } = props;
   const { setShow, image } = props;
-  const products = ["apple", "banana", "egg"];
+  const products = ["","apple", "banana", "egg"];
   const [theDetails, setTheDetails] = useState({});
   const [value, setValue] = useState();
 

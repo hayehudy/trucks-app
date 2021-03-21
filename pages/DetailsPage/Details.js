@@ -19,12 +19,12 @@ const DetailsPage = ({ navigation }) => {
   const [value, setValue] = useState();
   const [details, setDetails] = useState({});
   const options = {
-    TrucksTypes: ["Citroen", "Fiat", "Ferrari", "Dodge"],
-    Contractors: ["A", "B", "C", "D"],
-    Customers: ["avraham", "ytzchak", "yaakov", "yosef"],
-    Origins: ["#", "$", "%", "&"],
-    Destinations: ["#", "$", "%", "&"],
-    Cities: ["Jerusalem", "TelAviv", "Hayfa", "Ashdod"],
+    TrucksTypes: ["","Citroen", "Fiat", "Ferrari", "Dodge"],
+    Contractors: ["","A", "B", "C", "D"],
+    Customers: ["","avraham", "ytzchak", "yaakov", "yosef"],
+    Origins: ["","#", "$", "%", "&"],
+    Destinations: ["","#", "$", "%", "&"],
+    Cities: ["","Jerusalem", "TelAviv", "Hayfa", "Ashdod"],
   };
 
   const onChangeText = (text) => {

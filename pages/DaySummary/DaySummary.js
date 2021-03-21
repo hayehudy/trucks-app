@@ -64,7 +64,7 @@ const DaySummary = ({
                     (x, ind) => ind !== currentWork.index
                   );
                   await setJobs(theNewJob);
-                  const newJobs = JSON.stringify(jobs);
+                  const newJobs = JSON.stringify(theNewJob);
                   await AsyncStorage.setItem("loads", newJobs);
                   setShowModal(false);
                 } else {
