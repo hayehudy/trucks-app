@@ -45,7 +45,7 @@ const DetailsPage = ({ navigation }) => {
         <HeadBar navigation={navigation} />
         <View style={{ alignItems: "center", width: "100%" }}>
           {/* <Text>DETAILS</Text> */}
-          <Text style={{ marginTop: 10, color: "#003300", fontWeight: "bold" }}>
+          <Text style={{ marginTop: 10, color: "#333333", fontWeight: "bold" }}>
             TruckNumber
           </Text>
 
@@ -110,7 +110,7 @@ const DetailsPage = ({ navigation }) => {
             }}
             onPress={onPress}
           >
-            <Text style={{ color: "#000", fontSize: 22, fontWeight: "bold" }}>
+            <Text style={{ color: "#fff", fontSize: 22, fontWeight: "bold" }}>
               Continue
             </Text>
           </TouchableOpacity>

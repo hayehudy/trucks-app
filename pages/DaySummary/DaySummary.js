@@ -95,35 +95,30 @@ const DaySummary = ({
     <View style={DaySummaryStyles.container}>
       <View style={{ flex: 0.9 }}>
         <ScrollView>
-          <Text style={DaySummaryStyles.headertext}>THE DETAILS</Text>
+          <Text style={DaySummaryStyles.headertext}>JOB DETAILS</Text>
           <View style={DaySummaryStyles.details}>
-            <Text
-              style={{
-                fontWeight: "bold",
-                lineHeight: 17,
-                fontSize: 17,
-                marginBottom: -20,
-              }}
-            >
-              Time of start: {"  "}
-              {startTime}
-              {"\n"}Time of End: {"  "}
-              {endTime}
-            </Text>
-            <Text style={{ fontWeight: "bold", lineHeight: 30, fontSize: 17 }}>
-              {"\n"}Truck number: {"  "}
+            <Text style={DaySummaryStyles.txttitle}>Start:</Text>
+            <Text style={DaySummaryStyles.txtdetails1}>{startTime}</Text>
+            <Text style={DaySummaryStyles.txttitle}>End:</Text>
+            <Text style={DaySummaryStyles.txtdetails1}>{endTime}</Text>
+            <Text style={DaySummaryStyles.txttitle}>Truck number:</Text>
+            <Text style={DaySummaryStyles.txtdetails}>
               {details.TruckNumber}
-              {"\n"}Truck type: {"  "}
-              {details.TruckType}
-              {"\n"}Contractor: {"  "}
-              {details.Contractor}
-              {"\n"}Origin: {"  "}
-              {details.Origin}
-              {"\n"}Destination: {"  "}
-              {details.Destination}
-              {"\n"}City: {"  "}
-              {details.City}
             </Text>
+            <Text style={DaySummaryStyles.txttitle}>Truck type:</Text>
+            <Text style={DaySummaryStyles.txtdetails}>{details.TruckType}</Text>
+            <Text style={DaySummaryStyles.txttitle}>Contractor:</Text>
+            <Text style={DaySummaryStyles.txtdetails}>
+              {details.Contractor}
+            </Text>
+            <Text style={DaySummaryStyles.txttitle}>Origin:</Text>
+            <Text style={DaySummaryStyles.txtdetails}>{details.Origin}</Text>
+            <Text style={DaySummaryStyles.txttitle}>Destination: </Text>
+            <Text style={DaySummaryStyles.txtdetails}>
+              {details.Destination}
+            </Text>
+            <Text style={DaySummaryStyles.txttitle}>City: </Text>
+            <Text style={DaySummaryStyles.txtdetails}>{details.City}</Text>
             {/* <Text style={{ fontWeight: "bold" }}></Text>
           <Text style={{ fontWeight: "bold" }}></Text>
           <Text style={{ fontWeight: "bold" }}></Text>
@@ -175,14 +170,14 @@ const DaySummary = ({
                   </View>
 
                   <View style={DaySummaryStyles.row3}>
-                    {/* <TouchableOpacity
-                      onPress={() => setImageStyle({ width: 120, height: 180 })}
-                    > */}
-                    <Image
-                      source={{ uri: work.Image }}
-                      style={imageStyle}
-                    ></Image>
-                    {/* </TouchableOpacity> */}
+                    {work.Image ? (
+                      <Image
+                        source={{ uri: work.Image }}
+                        style={imageStyle}
+                      ></Image>
+                    ) : (
+                      <Text style={DaySummaryStyles.titletext}>----</Text>
+                    )}
                   </View>
 
                   <View style={DaySummaryStyles.row4}>
@@ -195,7 +190,7 @@ const DaySummary = ({
                         setCurrentWork(theWork);
                       }}
                     >
-                      <Icon name="delete-circle" size={30} color={"black"} />
+                      <Icon name="delete" size={25} color={"orange"} />
                     </TouchableOpacity>
                   </View>
                 </View>
@@ -209,21 +204,21 @@ const DaySummary = ({
         <View style={DaySummaryStyles.btn}>
           <TouchableOpacity
             onPress={() => {
-              setStatus("exit");
-              setShowModal(true);
-            }}
-          >
-            <Text style={DaySummaryStyles.textbtn}>End The Job?</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={DaySummaryStyles.btn}>
-          <TouchableOpacity
-            onPress={() => {
               // setStatus("exit");
               setSummary(false);
             }}
           >
             <Text style={DaySummaryStyles.textbtn}>Cancel</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={DaySummaryStyles.btn}>
+          <TouchableOpacity
+            onPress={() => {
+              setStatus("exit");
+              setShowModal(true);
+            }}
+          >
+            <Text style={DaySummaryStyles.textbtn}>End Job</Text>
           </TouchableOpacity>
         </View>
       </View>

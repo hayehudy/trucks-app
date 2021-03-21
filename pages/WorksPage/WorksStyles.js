@@ -9,6 +9,7 @@ const WorksStyles = StyleSheet.create({
     flexDirection: "row",
     padding: 10,
     borderBottomWidth: 2,
+    borderColor: "orange",
     height: 50,
   },
   allitems: {
@@ -16,22 +17,23 @@ const WorksStyles = StyleSheet.create({
     padding: 10,
     paddingTop: 20,
     borderBottomWidth: 2,
+    borderColor: "orange",
     height: 70,
-    backgroundColor: "#d9d9d9",
+    backgroundColor: "#fff",
   },
 
   headertext: {
     marginTop: 15,
     fontSize: 20,
     fontWeight: "bold",
-    color: "blue",
+    color: "orange",
     alignSelf: "center",
   },
   titleheader: {
     marginTop: 5,
     fontSize: 18,
     fontWeight: "bold",
-    color: "#000",
+    color: "#333333",
   },
 
   row1: {
@@ -54,7 +56,7 @@ const WorksStyles = StyleSheet.create({
   titletext: {
     fontSize: 18,
     fontWeight: "bold",
-    color: "#000",
+    color: "#333333",
   },
 
   btn: {
@@ -68,7 +70,7 @@ const WorksStyles = StyleSheet.create({
     justifyContent: "center",
   },
   textbtn: {
-    color: "red",
+    color: "#fff",
     fontSize: 20,
     fontWeight: "bold",
   },
@@ -87,7 +89,7 @@ const WorksStyles = StyleSheet.create({
   modaltext: {
     fontSize: 21,
     fontWeight: "bold",
-    color: "#000",
+    color: "#333333",
     lineHeight: 40,
     textAlign: "center",
   },

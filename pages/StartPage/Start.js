@@ -20,15 +20,7 @@ const StartPage = ({ navigation }) => {
   const hours = new Date().getHours();
   const minutes = new Date().getMinutes();
 
-  const days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
+  const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
   useEffect(() => {
     (async () => {
@@ -77,17 +69,21 @@ const StartPage = ({ navigation }) => {
   const onPress = async () => {
     await setStartTime(`${days[new Date().getDay()]}     ${
       date < 10 ? "0" + date : date
-    }/${month < 10 ? "0" + month : month}/${new Date().getFullYear()}     ${
+    }/${
+      month < 10 ? "0" + month : month
+    }/${new Date().getFullYear().toString().substr(-2)}     ${
       hours < 10 ? "0" + hours : hours
     }:${minutes < 10 ? "0" + minutes : minutes}
     `);
-    let theStartTime=JSON.stringify(`${days[new Date().getDay()]}     ${
+    let theStartTime = JSON.stringify(`${days[new Date().getDay()]}     ${
       date < 10 ? "0" + date : date
-    }/${month < 10 ? "0" + month : month}/${new Date().getFullYear()}     ${
+    }/${
+      month < 10 ? "0" + month : month
+    }/${new Date().getFullYear().toString().substr(-2)}     ${
       hours < 10 ? "0" + hours : hours
     }:${minutes < 10 ? "0" + minutes : minutes}
     `);
-    await AsyncStorage.setItem("startTime",theStartTime)
+    await AsyncStorage.setItem("startTime", theStartTime);
     setTextLocation(textlocation);
     setMap(mapview);
     navigation.navigate("DetailsPage");
@@ -98,7 +94,7 @@ const StartPage = ({ navigation }) => {
       <HeadBar navigation={navigation} />
       <View style={StartStyles.container}>
         <TouchableOpacity onPress={onPress} style={StartStyles.Btnstart}>
-          <Text style={StartStyles.loginText}>Start The Day</Text>
+          <Text style={StartStyles.loginText}>Start Job</Text>
         </TouchableOpacity>
         {/* <Text>
           {"\n"}

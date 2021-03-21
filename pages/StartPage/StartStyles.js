@@ -9,12 +9,12 @@ const StartStyles = StyleSheet.create({
 
   Btnstart: {
     width: "70%",
-    borderRadius: 10,
+    borderRadius: 20,
     height: 60,
     alignItems: "center",
     justifyContent: "center",
     marginTop: 220,
-    backgroundColor: "#7F7F7F",
+    backgroundColor: "orange",
     color: "#fff",
   },
 

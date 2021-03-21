@@ -83,7 +83,7 @@ const HeadBar = ({ navigation }) => {
               setShowModal(true);
             }}
           >
-            <Iconmaterial name="logout" size={35} color={"red"} />
+            <Iconmaterial name="logout" size={35} />
           </TouchableOpacity>
         </View>
 

@@ -45,15 +45,7 @@ const WorksPage = ({ route, navigation }) => {
   const hours = new Date().getHours();
   const minutes = new Date().getMinutes();
 
-  const days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
+  const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
   useEffect(() => {
     if (capturedImage) {
@@ -150,6 +142,7 @@ const WorksPage = ({ route, navigation }) => {
         style={{
           marginTop: StatusBar.currentHieght || 30,
           marginBottom: 60,
+          backgroundColor: "#e6e6e6",
         }}
       >
         <HeadBar navigation={navigation} />
@@ -214,14 +207,14 @@ const WorksPage = ({ route, navigation }) => {
                     </View>
 
                     <View style={WorksStyles.row3}>
-                      {/* <TouchableOpacity
-                      onPress={() => setImageStyle({ width: 120, height: 180 })}
-                    > */}
-                      <Image
-                        source={{ uri: work.Image }}
-                        style={imageStyle}
-                      ></Image>
-                      {/* </TouchableOpacity> */}
+                      {work.Image ? (
+                        <Image
+                          source={{ uri: work.Image }}
+                          style={imageStyle}
+                        ></Image>
+                      ) : (
+                        <Text style={WorksStyles.titletext}>----</Text>
+                      )}
                     </View>
 
                     <View style={WorksStyles.row4}>
@@ -234,7 +227,7 @@ const WorksPage = ({ route, navigation }) => {
                           setCurrentWork(theWork);
                         }}
                       >
-                        <Icon name="delete-circle" size={30} color={"black"} />
+                        <Icon name="delete" size={25} color={"orange"} />
                       </TouchableOpacity>
                     </View>
                   </View>
@@ -246,18 +239,13 @@ const WorksPage = ({ route, navigation }) => {
 
           <View style={WorksStyles.btnView}>
             <View style={WorksStyles.btn}>
-              <TouchableOpacity onPress={onPress}>
-                <Text style={WorksStyles.textbtn}>Add Load</Text>
-              </TouchableOpacity>
-            </View>
-            <View style={WorksStyles.btn}>
               <TouchableOpacity
                 onPress={async () => {
                   let theEndTime = JSON.stringify(`${
                     days[new Date().getDay()]
                   }     ${date < 10 ? "0" + date : date}/${
                     month < 10 ? "0" + month : month
-                  }/${new Date().getFullYear()}     ${
+                  }/${new Date().getFullYear().toString().substr(-2)}     ${
                     hours < 10 ? "0" + hours : hours
                   }:${minutes < 10 ? "0" + minutes : minutes}
                   `);
@@ -266,7 +254,7 @@ const WorksPage = ({ route, navigation }) => {
                     date < 10 ? "0" + date : date
                   }/${
                     month < 10 ? "0" + month : month
-                  }/${new Date().getFullYear()}     ${
+                  }/${new Date().getFullYear().toString().substr(-2)}     ${
                     hours < 10 ? "0" + hours : hours
                   }:${minutes < 10 ? "0" + minutes : minutes}
                   `);
@@ -281,7 +269,12 @@ const WorksPage = ({ route, navigation }) => {
                   setSummary(true);
                 }}
               >
-                <Text style={WorksStyles.textbtn}>End The Job</Text>
+                <Text style={WorksStyles.textbtn}>End Job</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={WorksStyles.btn}>
+              <TouchableOpacity onPress={onPress}>
+                <Text style={WorksStyles.textbtn}>Add Load</Text>
               </TouchableOpacity>
             </View>
           </View>

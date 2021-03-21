@@ -8,9 +8,11 @@ const DetailsStyles = StyleSheet.create({
     fontWeight: "bold",
     backgroundColor: "#ffffff",
     borderRadius: 10,
+    borderColor: "orange",
+
     width: 250,
     height: 40,
-    borderWidth: 1,
+    borderWidth: 1.5,
   },
 });
 

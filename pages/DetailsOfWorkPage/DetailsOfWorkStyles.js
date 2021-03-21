@@ -9,7 +9,6 @@ const DetailsOfWorkStyles = StyleSheet.create({
     marginTop: 20,
     alignItems: "center",
     alignSelf: "center",
-    backgroundColor: "#cccccc",
     width: "90%",
     borderRadius: 50,
   },
@@ -17,11 +16,12 @@ const DetailsOfWorkStyles = StyleSheet.create({
   headertext: {
     marginTop: 20,
     fontSize: 25,
-    color: "#000",
+    color: "orange",
     fontWeight: "bold",
   },
 
   titletext: {
+    color: "#000",
     marginTop: 15,
     fontSize: 22,
     fontWeight: "bold",
@@ -34,23 +34,29 @@ const DetailsOfWorkStyles = StyleSheet.create({
     marginTop: 10,
     backgroundColor: "#ffffff",
     borderRadius: 20,
+    borderColor: "orange",
     width: "80%",
-    height: 45,
+    height: 50,
     borderWidth: 2,
     textAlign: "center",
   },
 
   picker: {
+    height: 50,
+    flexDirection: "row",
+    alignItems: "center",
     marginTop: 10,
     borderColor: "#000",
     backgroundColor: "#ffffff",
     borderWidth: 2,
     width: "80%",
     borderRadius: 20,
+    borderColor: "orange",
+    paddingLeft: 20,
   },
 
   btnView: {
-    marginTop: 25,
+    marginTop: 35,
     flexDirection: "row",
     padding: 10,
     height: 80,
@@ -66,11 +72,12 @@ const DetailsOfWorkStyles = StyleSheet.create({
     width: "80%",
     height: 50,
     borderWidth: 2,
+    borderColor: "orange",
   },
 
   btn: {
     // marginTop: 25,
-    backgroundColor: "#000",
+    backgroundColor: "orange",
     borderRadius: 20,
     padding: 7,
     width: "45%",
@@ -82,6 +89,22 @@ const DetailsOfWorkStyles = StyleSheet.create({
     fontSize: 25,
     color: "#ffffff",
     fontWeight: "bold",
+  },
+  pickerIcon: {
+    color: "orange",
+    position: "absolute",
+    fontSize: 34,
+    right: "90%",
+    // width: "10%",
+  },
+
+  pickerContent: {
+    position: "absolute",
+    alignItems: "center",
+    width: "100%",
+    color: "#000000",
+    backgroundColor: "transparent",
+    transform: [{ scaleX: 1.1 }, { scaleY: 1.1 }],
   },
 });
 

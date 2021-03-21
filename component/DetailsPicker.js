@@ -18,7 +18,7 @@ const DetailsPicker = (props) => {
       <Text
         style={{
           marginTop: 10,
-          color: "#003300",
+          color: "#333333",
           fontSize: 15,
           fontWeight: "bold",
         }}
@@ -66,18 +66,20 @@ const Style = StyleSheet.create({
     borderRadius: 10,
     width: 250,
     height: 40,
-    borderColor: "#000000",
-    borderWidth: 1,
+    borderColor: "orange",
+    borderWidth: 1.5,
     backgroundColor: "white",
     flexDirection: "row",
     alignItems: "center",
+    paddingLeft: 15,
   },
 
   pickerIcon: {
-    color: "red",
+    color: "orange",
     position: "absolute",
-    fontSize: 20,
-    width: "10%",
+    fontSize: 34,
+    right: "90%",
+    // width: "10%",
   },
 
   pickerContent: {

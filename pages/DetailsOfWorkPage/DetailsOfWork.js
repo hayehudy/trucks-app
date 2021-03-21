@@ -11,9 +11,10 @@ import {
 import DetailsOfWorkStyles from "./DetailsOfWorkStyles";
 import { Picker } from "@react-native-picker/picker";
 import { Camera } from "expo-camera";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import Icond from "react-native-vector-icons/MaterialCommunityIcons";
 import MakeCamera from "../../component/MakeCamera";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Button, Icon } from "native-base";
 
 const DetailsOfWork = (props) => {
   const { navigation } = props;
@@ -61,7 +62,7 @@ const DetailsOfWork = (props) => {
     <>
       <View style={DetailsOfWorkStyles.container}>
         <View style={DetailsOfWorkStyles.background}>
-          <Text style={DetailsOfWorkStyles.headertext}>CURRENT LOAD</Text>
+          <Text style={DetailsOfWorkStyles.headertext}>ADD LOAD</Text>
 
           <Text style={DetailsOfWorkStyles.titletext}>Tons or Load</Text>
 
@@ -76,12 +77,14 @@ const DetailsOfWork = (props) => {
           <Text style={DetailsOfWorkStyles.titletext}>Product</Text>
 
           <View style={DetailsOfWorkStyles.picker}>
+            <Icon
+              name="arrow-drop-down"
+              type="MaterialIcons"
+              style={DetailsOfWorkStyles.pickerIcon}
+            />
             <Picker
-              style={{
-                width: "80%",
-                height: 50,
-              }}
-              dropdownIconColor={"red"}
+              style={DetailsOfWorkStyles.pickerContent}
+              mode="dropdown"
               selectedValue={theDetails.Product}
               onValueChange={(itemValue, itemIndex) => {
                 const detailsObj = {};
@@ -108,19 +111,16 @@ const DetailsOfWork = (props) => {
               style={DetailsOfWorkStyles.btnCamera}
               onPress={__startCamera}
             >
-              <Icon
+              <Icond
                 name="camera"
                 size={40}
                 style={{ alignSelf: "center", marginTop: 3 }}
-                color={"#000"}
+                color={"orange"}
               />
             </TouchableOpacity>
           )}
 
           <View style={DetailsOfWorkStyles.btnView}>
-            <TouchableOpacity style={DetailsOfWorkStyles.btn} onPress={onPress}>
-              <Text style={DetailsOfWorkStyles.btntext}>Confirm</Text>
-            </TouchableOpacity>
             <TouchableOpacity
               style={DetailsOfWorkStyles.btn}
               onPress={() => {
@@ -128,6 +128,9 @@ const DetailsOfWork = (props) => {
               }}
             >
               <Text style={DetailsOfWorkStyles.btntext}>Cancel</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={DetailsOfWorkStyles.btn} onPress={onPress}>
+              <Text style={DetailsOfWorkStyles.btntext}>Confirm</Text>
             </TouchableOpacity>
           </View>
         </View>
