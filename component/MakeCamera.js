@@ -5,6 +5,7 @@ import {
   View,
   TouchableOpacity,
   ImageBackground,
+  BackHandler,
 } from "react-native";
 import { StatusBar } from "expo-status-bar";
 
@@ -25,6 +26,20 @@ export default function MakeCamera({ navigation }) {
       const { status } = await Camera.requestPermissionsAsync();
       setHasPermission(status === "granted");
     })();
+  }, []);
+
+  useEffect(() => {
+    const backAction = () => {
+      navigation.navigate("WorksPage");
+      return true;
+    };
+
+    const backHandler = BackHandler.addEventListener(
+      "hardwareBackPress",
+      backAction
+    );
+
+    return () => backHandler.remove();
   }, []);
 
   async function takePicture() {

@@ -92,6 +92,11 @@ const DetailsOfWork = (props) => {
                 setTheDetails({ ...theDetails, ...detailsObj });
               }}
             >
+              <Picker.Item
+                color="#ccc"
+                label="Please select an option..."
+                value={null}
+              />
               {products.map((product, index) => (
                 <Picker.Item label={product} value={product} key={index} />
               ))}

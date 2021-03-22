@@ -51,6 +51,12 @@ const DetailsPicker = (props) => {
             setDetails({ ...details, ...detailsObj });
           }}
         >
+          <Picker.Item
+            color="#ccc"
+            label="Please select an option..."
+            value={null}
+          />
+
           {options[theOption].map((option, index) => (
             <Picker.Item label={option} value={option} key={index} />
           ))}
@@ -86,7 +92,7 @@ const Style = StyleSheet.create({
     position: "absolute",
     alignItems: "center",
     width: "100%",
-    color: "#000000",
+    color: "#404040",
     backgroundColor: "transparent",
   },
 });

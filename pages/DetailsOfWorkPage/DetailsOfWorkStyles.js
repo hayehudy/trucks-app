@@ -102,7 +102,7 @@ const DetailsOfWorkStyles = StyleSheet.create({
     position: "absolute",
     alignItems: "center",
     width: "100%",
-    color: "#000000",
+    color: "#404040",
     backgroundColor: "transparent",
     transform: [{ scaleX: 1.1 }, { scaleY: 1.1 }],
   },
