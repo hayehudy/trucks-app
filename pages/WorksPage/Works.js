@@ -108,7 +108,7 @@ const WorksPage = ({ route, navigation }) => {
                   let theNewJob = theJobs.filter(
                     (x, ind) => ind !== currentWork.index
                   );
-                  await setJobs(theNewJob);
+                  setJobs(theNewJob);
                   const newJobs = JSON.stringify(theNewJob);
                   await AsyncStorage.setItem("loads", newJobs);
                   setShowModal(false);
