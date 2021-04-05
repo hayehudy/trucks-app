@@ -84,7 +84,7 @@ const Style = StyleSheet.create({
     color: "orange",
     position: "absolute",
     fontSize: 34,
-    right: "90%",
+    left: "90%",
     // width: "10%",
   },
 

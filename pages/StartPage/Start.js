@@ -84,6 +84,13 @@ const StartPage = ({ navigation }) => {
     }:${minutes < 10 ? "0" + minutes : minutes}
     `);
     await AsyncStorage.setItem("startTime", theStartTime);
+    let timenumjob = JSON.stringify(`${date < 10 ? "0" + date : date}${
+      month < 10 ? "0" + month : month
+    }${new Date().getFullYear().toString().substr(-2)}${
+      hours < 10 ? "0" + hours : hours
+    }${minutes < 10 ? "0" + minutes : minutes}
+    `);
+    await AsyncStorage.setItem("timenumjob", timenumjob);
     setTextLocation(textlocation);
     setMap(mapview);
     navigation.navigate("DetailsPage");

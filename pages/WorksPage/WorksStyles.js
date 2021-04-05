@@ -30,33 +30,49 @@ const WorksStyles = StyleSheet.create({
     alignSelf: "center",
   },
   titleheader: {
-    marginTop: 5,
     fontSize: 18,
     fontWeight: "bold",
     color: "#333333",
+    textAlign: "center",
   },
 
   row1: {
     alignItems: "center",
-    width: "30%",
+    width: "23%",
+    justifyContent: "center",
   },
   row2: {
     alignItems: "center",
-    width: "30%",
+    width: "23%",
+    justifyContent: "center",
+    borderLeftWidth: 1,
+    borderLeftColor: "#000",
   },
   row3: {
     alignItems: "center",
-    width: "30%",
+    width: "23%",
+    justifyContent: "center",
+    borderLeftWidth: 1,
+    borderLeftColor: "#000",
   },
   row4: {
     alignItems: "center",
-    width: "10%",
+    width: "23%",
+    justifyContent: "center",
+    borderLeftWidth: 1,
+    borderLeftColor: "#000",
+  },
+  row5: {
+    alignItems: "center",
+    width: "8%",
+    justifyContent: "center",
   },
 
   titletext: {
     fontSize: 18,
     fontWeight: "bold",
     color: "#333333",
+    textAlign: "center",
   },
 
   btn: {

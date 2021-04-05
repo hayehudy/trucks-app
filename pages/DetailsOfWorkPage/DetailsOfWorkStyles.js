@@ -6,11 +6,11 @@ const DetailsOfWorkStyles = StyleSheet.create({
   },
 
   background: {
-    marginTop: 20,
     alignItems: "center",
     alignSelf: "center",
     width: "90%",
     borderRadius: 50,
+    marginBottom: 80,
   },
 
   headertext: {
@@ -22,7 +22,7 @@ const DetailsOfWorkStyles = StyleSheet.create({
 
   titletext: {
     color: "#000",
-    marginTop: 15,
+    marginTop: 10,
     fontSize: 22,
     fontWeight: "bold",
   },
@@ -36,13 +36,13 @@ const DetailsOfWorkStyles = StyleSheet.create({
     borderRadius: 20,
     borderColor: "orange",
     width: "80%",
-    height: 50,
+    height: 45,
     borderWidth: 2,
     textAlign: "center",
   },
 
   picker: {
-    height: 50,
+    height: 45,
     flexDirection: "row",
     alignItems: "center",
     marginTop: 10,
@@ -56,7 +56,7 @@ const DetailsOfWorkStyles = StyleSheet.create({
   },
 
   btnView: {
-    marginTop: 35,
+    marginTop: 15,
     flexDirection: "row",
     padding: 10,
     height: 80,
@@ -94,7 +94,7 @@ const DetailsOfWorkStyles = StyleSheet.create({
     color: "orange",
     position: "absolute",
     fontSize: 34,
-    right: "90%",
+    left: "90%",
     // width: "10%",
   },
 
@@ -102,6 +102,7 @@ const DetailsOfWorkStyles = StyleSheet.create({
     position: "absolute",
     alignItems: "center",
     width: "100%",
+    left: "10%",
     color: "#404040",
     backgroundColor: "transparent",
     transform: [{ scaleX: 1.1 }, { scaleY: 1.1 }],

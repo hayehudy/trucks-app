@@ -96,8 +96,7 @@ export default function App() {
       try {
         const valueemail = await AsyncStorage.getItem("email");
         const valuepassword = await AsyncStorage.getItem("password");
-        JSON.parse(valueemail) === "a@a.com" &&
-        JSON.parse(valuepassword) === "1"
+        JSON.parse(valueemail) === "111" && JSON.parse(valuepassword) === "1"
           ? setloadlogin(false)
           : Location.requestPermissionsAsync();
         Camera.requestPermissionsAsync();

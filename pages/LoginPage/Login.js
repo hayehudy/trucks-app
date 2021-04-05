@@ -33,16 +33,16 @@ const LogInPage = ({ navigation }) => {
     setLogin(true);
   }, []);
 
-  const valueemail = (valueemail) => {
-    const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
-    if (reg.test(valueemail) === false) {
-      setMessageErrEmail(true);
-    } else {
-      setMessageErrEmail(false);
-    }
+  const valueemail = async (valueemail) => {
+    // const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
+    // if (reg.test(valueemail) === false) {
+    //   setMessageErrEmail(true);
+    // } else {
+    //   setMessageErrEmail(false);
+    // }
     try {
       const email = JSON.stringify(valueemail);
-      AsyncStorage.setItem("email", email);
+      await AsyncStorage.setItem("email", email);
       // console.log(`
       // email - ${email}`);
     } catch (e) {
@@ -67,7 +67,7 @@ const LogInPage = ({ navigation }) => {
       const valuepassword = await AsyncStorage.getItem("password");
       // console.log(valueemail);
       // console.log(valuepassword);
-      JSON.parse(valueemail) === "a@a.com" && JSON.parse(valuepassword) === "1"
+      JSON.parse(valueemail) === "111" && JSON.parse(valuepassword) === "1"
         ? access()
         : err();
     } catch (e) {
@@ -104,9 +104,9 @@ const LogInPage = ({ navigation }) => {
               <TextInput
                 autoFocus={true}
                 autoCompleteType={"email"}
-                keyboardType={"email-address"}
+                keyboardType={"numeric"}
                 style={LogInStyles.TextInput}
-                placeholder="Email"
+                placeholder="User"
                 placeholderTextColor="#003f5c"
                 onChangeText={valueemail}
               />

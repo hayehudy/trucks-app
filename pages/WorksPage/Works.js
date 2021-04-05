@@ -36,7 +36,7 @@ const WorksPage = ({ route, navigation }) => {
   const [imageStyle, setImageStyle] = useState({
     width: 50,
     height: 60,
-    marginTop: -15,
+    marginTop: -10,
   });
   const [summary, setSummary] = useState(false);
 
@@ -186,10 +186,14 @@ const WorksPage = ({ route, navigation }) => {
               </View>
 
               <View style={WorksStyles.row3}>
+                <Text style={WorksStyles.titleheader}>Ticket num</Text>
+              </View>
+
+              <View style={WorksStyles.row4}>
                 <Text style={WorksStyles.titleheader}>Ticket</Text>
               </View>
 
-              <View style={WorksStyles.row4} />
+              <View style={WorksStyles.row5} />
             </View>
 
             <ScrollView>
@@ -207,6 +211,12 @@ const WorksPage = ({ route, navigation }) => {
                     </View>
 
                     <View style={WorksStyles.row3}>
+                      <Text style={WorksStyles.titletext}>
+                        {work.ticketnumber}
+                      </Text>
+                    </View>
+
+                    <View style={WorksStyles.row4}>
                       {work.Image ? (
                         <Image
                           source={{ uri: work.Image }}
@@ -217,7 +227,7 @@ const WorksPage = ({ route, navigation }) => {
                       )}
                     </View>
 
-                    <View style={WorksStyles.row4}>
+                    <View style={WorksStyles.row5}>
                       <TouchableOpacity
                         onPress={() => {
                           setShowModal(true);
@@ -238,6 +248,12 @@ const WorksPage = ({ route, navigation }) => {
           <TheModal />
 
           <View style={WorksStyles.btnView}>
+            <View style={WorksStyles.btn}>
+              <TouchableOpacity onPress={onPress}>
+                <Text style={WorksStyles.textbtn}>Add Load</Text>
+              </TouchableOpacity>
+            </View>
+
             <View style={WorksStyles.btn}>
               <TouchableOpacity
                 onPress={async () => {
@@ -270,11 +286,6 @@ const WorksPage = ({ route, navigation }) => {
                 }}
               >
                 <Text style={WorksStyles.textbtn}>End Job</Text>
-              </TouchableOpacity>
-            </View>
-            <View style={WorksStyles.btn}>
-              <TouchableOpacity onPress={onPress}>
-                <Text style={WorksStyles.textbtn}>Add Load</Text>
               </TouchableOpacity>
             </View>
           </View>

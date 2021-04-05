@@ -29,7 +29,7 @@ const DaySummary = ({
   const [imageStyle, setImageStyle] = useState({
     width: 50,
     height: 60,
-    marginTop: -15,
+    marginTop: -10,
   });
 
   const TheModal = () => {
@@ -97,6 +97,8 @@ const DaySummary = ({
         <ScrollView>
           <Text style={DaySummaryStyles.headertext}>JOB DETAILS</Text>
           <View style={DaySummaryStyles.details}>
+            <Text style={DaySummaryStyles.txttitle}>Job Number:</Text>
+            <Text style={DaySummaryStyles.txtdetails1}>{details.jobnumb}</Text>
             <Text style={DaySummaryStyles.txttitle}>Start:</Text>
             <Text style={DaySummaryStyles.txtdetails1}>{startTime}</Text>
             <Text style={DaySummaryStyles.txttitle}>End:</Text>
@@ -119,17 +121,6 @@ const DaySummary = ({
             </Text>
             <Text style={DaySummaryStyles.txttitle}>City: </Text>
             <Text style={DaySummaryStyles.txtdetails}>{details.City}</Text>
-            {/* <Text style={{ fontWeight: "bold" }}></Text>
-          <Text style={{ fontWeight: "bold" }}></Text>
-          <Text style={{ fontWeight: "bold" }}></Text>
-          <Text style={{ fontWeight: "bold" }}>
-            
-          </Text>
-          <Text style={{ fontWeight: "bold" }}></Text>
-          <Text style={{ fontWeight: "bold" }}>
-            
-          </Text>
-          <Text style={{ fontWeight: "bold" }}></Text> */}
           </View>
 
           <View
@@ -149,10 +140,14 @@ const DaySummary = ({
               </View>
 
               <View style={DaySummaryStyles.row3}>
+                <Text style={DaySummaryStyles.titleheader}>Ticket num</Text>
+              </View>
+
+              <View style={DaySummaryStyles.row4}>
                 <Text style={DaySummaryStyles.titleheader}>Ticket</Text>
               </View>
 
-              <View style={DaySummaryStyles.row4} />
+              <View style={DaySummaryStyles.row5} />
             </View>
             {jobs &&
               jobs.map((work, index) => (
@@ -170,6 +165,12 @@ const DaySummary = ({
                   </View>
 
                   <View style={DaySummaryStyles.row3}>
+                    <Text style={DaySummaryStyles.titletext}>
+                      {work.ticketnumber}
+                    </Text>
+                  </View>
+
+                  <View style={DaySummaryStyles.row4}>
                     {work.Image ? (
                       <Image
                         source={{ uri: work.Image }}
@@ -180,7 +181,7 @@ const DaySummary = ({
                     )}
                   </View>
 
-                  <View style={DaySummaryStyles.row4}>
+                  <View style={DaySummaryStyles.row5}>
                     <TouchableOpacity
                       onPress={() => {
                         setShowModal(true);

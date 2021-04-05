@@ -18,7 +18,6 @@ const DaySummaryStyles = StyleSheet.create({
     paddingTop: 20,
     borderBottomWidth: 2,
     borderColor: "orange",
-
     height: 70,
   },
 
@@ -34,23 +33,39 @@ const DaySummaryStyles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
     color: "#333333",
+    textAlign: "center",
   },
 
   row1: {
     alignItems: "center",
-    width: "30%",
+    width: "23%",
+    justifyContent: "center",
   },
   row2: {
     alignItems: "center",
-    width: "30%",
+    width: "23%",
+    justifyContent: "center",
+    borderLeftWidth: 1,
+    borderLeftColor: "#000",
   },
   row3: {
     alignItems: "center",
-    width: "30%",
+    width: "23%",
+    justifyContent: "center",
+    borderLeftWidth: 1,
+    borderLeftColor: "#000",
   },
   row4: {
     alignItems: "center",
-    width: "10%",
+    width: "23%",
+    justifyContent: "center",
+    borderLeftWidth: 1,
+    borderLeftColor: "#000",
+  },
+  row5: {
+    alignItems: "center",
+    width: "8%",
+    justifyContent: "center",
   },
 
   titletext: {
@@ -138,14 +153,14 @@ const DaySummaryStyles = StyleSheet.create({
   },
 
   txtdetails: {
-    right: 120,
+    left: 120,
     fontSize: 16,
-    marginTop: -21,
+    marginTop: -23,
   },
   txtdetails1: {
-    right: 120,
+    left: 120,
     fontSize: 16,
-    marginTop: -21,
+    marginTop: -23,
     marginBottom: -17,
   },
 });

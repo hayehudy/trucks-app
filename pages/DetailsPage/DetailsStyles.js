@@ -1,18 +1,30 @@
 import { StyleSheet } from "react-native";
 
 const DetailsStyles = StyleSheet.create({
-  TextInput: {
-    paddingLeft: 15,
-    paddingRight: 15,
+  TextInput1: {
+    paddingLeft: 20,
     fontSize: 20,
     fontWeight: "bold",
     backgroundColor: "#ffffff",
     borderRadius: 10,
     borderColor: "orange",
-
+    textAlign: "center",
     width: 250,
     height: 40,
     borderWidth: 1.5,
+    color: "#333333",
+  },
+  TextInput: {
+    fontSize: 20,
+    fontWeight: "bold",
+    backgroundColor: "#ffffff",
+    borderRadius: 10,
+    borderColor: "orange",
+    textAlign: "center",
+    width: 250,
+    height: 40,
+    borderWidth: 1.5,
+    color: "#333333",
   },
 });
 

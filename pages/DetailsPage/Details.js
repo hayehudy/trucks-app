@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {
+  ScrollView,
   Text,
   TextInput,
   TouchableOpacity,
@@ -17,6 +18,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 const DetailsPage = ({ navigation }) => {
   // const route = useRoute();
   const [value, setValue] = useState();
+  const [numjob, setNumjob] = useState("");
   const [details, setDetails] = useState({});
   const options = {
     TrucksTypes: ["Citroen", "Fiat", "Ferrari", "Dodge"],
@@ -31,92 +33,133 @@ const DetailsPage = ({ navigation }) => {
     setValue(text);
     const obj = {};
     obj["TruckNumber"] = text;
+    obj["jobnumb"] = numjob;
     setDetails({ ...details, ...obj });
   };
+
   const onPress = async () => {
     const theDetails = JSON.stringify(details);
     await AsyncStorage.setItem("details", theDetails);
     navigation.navigate("WorksPage");
   };
+  const funcnumjob = async () => {
+    let theStartTime = await AsyncStorage.getItem("timenumjob");
+    let theStartTime1 = JSON.parse(theStartTime);
+    const numuser = await AsyncStorage.getItem("email");
+    let numuser1 = JSON.parse(numuser);
+    setNumjob(`${numuser1}${theStartTime1}`);
+  };
+  funcnumjob();
 
   return (
-    <>
-      <View style={{ marginTop: StatusBar.currentHieght || 30 }}>
-        <HeadBar navigation={navigation} />
-        <View style={{ alignItems: "center", width: "100%" }}>
-          {/* <Text>DETAILS</Text> */}
-          <Text style={{ marginTop: 10, color: "#333333", fontWeight: "bold" }}>
-            TruckNumber
-          </Text>
+    <View style={{ marginTop: StatusBar.currentHieght || 30 }}>
+      <HeadBar navigation={navigation} />
+      <View>
+        <View>
+          <ScrollView>
+            <View style={{ alignItems: "center" }}>
+              {/* <Text>DETAILS</Text> */}
+              <Text
+                style={{
+                  marginTop: 10,
+                  color: "#333333",
+                  fontWeight: "bold",
+                }}
+              >
+                Job Number
+              </Text>
 
-          <TextInput
-            style={DetailsStyles.TextInput}
-            onChangeText={(text) => onChangeText(text)}
-            value={value}
-            numeric
-            keyboardType={"numeric"}
-          />
-          <DetailsPicker
-            theOption="TrucksTypes"
-            detail="TruckType"
-            options={options}
-            details={details}
-            setDetails={setDetails}
-          />
-          <DetailsPicker
-            theOption="Contractors"
-            detail="Contractor"
-            options={options}
-            details={details}
-            setDetails={setDetails}
-          />
-          <DetailsPicker
-            theOption="Customers"
-            detail="Customer"
-            options={options}
-            details={details}
-            setDetails={setDetails}
-          />
-          <DetailsPicker
-            theOption="Origins"
-            detail="Origin"
-            options={options}
-            details={details}
-            setDetails={setDetails}
-          />
-          <DetailsPicker
-            theOption="Destinations"
-            detail="Destination"
-            options={options}
-            details={details}
-            setDetails={setDetails}
-          />
-          <DetailsPicker
-            theOption="Cities"
-            detail="City"
-            options={options}
-            details={details}
-            setDetails={setDetails}
-          />
-          <TouchableOpacity
-            style={{
-              alignItems: "center",
-              marginTop: 20,
-              backgroundColor: "orange",
-              borderRadius: 20,
-              padding: 10,
-              elevation: 2,
-              width: 200,
-            }}
-            onPress={onPress}
-          >
-            <Text style={{ color: "#fff", fontSize: 22, fontWeight: "bold" }}>
-              Continue
-            </Text>
-          </TouchableOpacity>
+              <TextInput
+                style={DetailsStyles.TextInput1}
+                value={numjob}
+                editable={false}
+                selectTextOnFocus={false}
+                autoFocus={false}
+              />
+              <Text
+                style={{
+                  marginTop: 10,
+                  color: "#333333",
+                  fontWeight: "bold",
+                }}
+              >
+                Truck Number
+              </Text>
+
+              <TextInput
+                style={DetailsStyles.TextInput}
+                onChangeText={(text) => onChangeText(text)}
+                value={value}
+                autoFocus={true}
+                numeric
+                keyboardType={"numeric"}
+              />
+              <DetailsPicker
+                theOption="TrucksTypes"
+                detail="TruckType"
+                options={options}
+                details={details}
+                setDetails={setDetails}
+              />
+              <DetailsPicker
+                theOption="Contractors"
+                detail="Contractor"
+                options={options}
+                details={details}
+                setDetails={setDetails}
+              />
+              <DetailsPicker
+                theOption="Customers"
+                detail="Customer"
+                options={options}
+                details={details}
+                setDetails={setDetails}
+              />
+              <DetailsPicker
+                theOption="Origins"
+                detail="Origin"
+                options={options}
+                details={details}
+                setDetails={setDetails}
+              />
+              <DetailsPicker
+                theOption="Destinations"
+                detail="Destination"
+                options={options}
+                details={details}
+                setDetails={setDetails}
+              />
+              <DetailsPicker
+                theOption="Cities"
+                detail="City"
+                options={options}
+                details={details}
+                setDetails={setDetails}
+              />
+              <TouchableOpacity
+                style={{
+                  alignItems: "center",
+                  marginTop: 20,
+                  backgroundColor: "orange",
+                  borderRadius: 20,
+                  padding: 10,
+                  elevation: 2,
+                  width: 200,
+                  marginBottom: 150,
+                }}
+                onPress={onPress}
+              >
+                <Text
+                  style={{ color: "#fff", fontSize: 22, fontWeight: "bold" }}
+                >
+                  Continue
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </ScrollView>
         </View>
       </View>
-    </>
+    </View>
   );
 };
 
