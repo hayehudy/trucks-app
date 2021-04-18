@@ -148,24 +148,12 @@ export default function App() {
             }}
           />
         )}
-        {/* <Drawer.Screen
-          name="sendLocation"
-          component={sendLocation}
-          options={{
-            gestureEnabled: false,
-
-            title: "Start",
-            drawerIcon: ({ focused, size }) => (
-              <Icon name="power-off" size={30} />
-            ),
-          }}
-        /> */}
         {!fullDetails && (
           <Drawer.Screen
             name="StartPage"
             component={StartPage}
             options={{
-              gestureEnabled: false,
+              // gestureEnabled: false,
 
               title: "Start",
               drawerIcon: ({ focused, size }) => (
@@ -179,7 +167,7 @@ export default function App() {
             name="DetailsPage"
             component={DetailsPage}
             options={{
-              gestureEnabled: false,
+              // gestureEnabled: false,
               headerLeft: null,
               gesturesEnabled: false,
               headerBackTitle: null,
@@ -197,7 +185,7 @@ export default function App() {
           name="WorksPage"
           component={WorksPage}
           options={{
-            gestureEnabled: false,
+            // gestureEnabled: false,
 
             title: "Works",
             drawerIcon: ({ focused, size }) => (
@@ -211,6 +199,13 @@ export default function App() {
           options={{
             gestureEnabled: false,
             drawerLabel: () => null,
+          }}
+        />
+        <Drawer.Screen
+          name="sendLocation"
+          component={sendLocation}
+          options={{
+            title: "send Location",
           }}
         />
       </Drawer.Navigator>

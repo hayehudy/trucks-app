@@ -4,173 +4,129 @@ import { StatusBar } from "expo-status-bar";
 import sendLocationStyle from "./sendLocationStyle";
 import HeadBar from "../../component/HeadBar";
 import * as Location from "expo-location";
-import MapView, { Marker } from "react-native-maps";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const sendLocation = ({ navigation }) => {
-  const [startTime, setStartTime] = useState("");
-  const [latitude, setLatitude] = useState("");
-  const [longitude, setLongitude] = useState("");
-  const [textLocation, setTextLocation] = useState("");
-  const [map, setMap] = useState();
-  const [cartproduct, setCartproduct] = useState([{ a: "jjjjjj" }]);
-  const [errorMsg, setErrorMsg] = useState(null);
+  const [send, setSend] = useState([]);
 
-  const month = new Date().getMonth() + 1;
-  const date = new Date().getDate();
-  const hours = new Date().getHours();
-  const minutes = new Date().getMinutes();
+  const data = async () => {
+    // let location = await Location.getCurrentPositionAsync({});
+    // let Lat = location.coords.latitude;
+    // let Lng = location.coords.longitude;
+    // let time2 = `${new Date().getHours()}:${
+    //   new Date().getMinutes() < 10
+    //     ? "0" + new Date().getMinutes()
+    //     : new Date().getMinutes()
+    // }:${new Date().getSeconds()}`;
+    // setSend((send) => [...send, { time: time2, Lat: Lat, Lng: Lng }]);
+  };
 
-  const days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
+  const storagelocation = async () => {
+    const getstorage = await AsyncStorage.getItem("location");
+    const locationparse = await JSON.parse(getstorage);
+    setSend(locationparse);
 
-  // useEffect(() => {
-  //   (async () => {
-  //     let location = await Location.getCurrentPositionAsync({});
-  //     setLatitude(location.coords.latitude);
-  //     setLongitude(location.coords.longitude);
-  //   })();
-  // }, []);
+    console.log("sendLocation", locationparse);
+  };
 
-  let textlocationaa = `קו רוחב  ${latitude} קו אורך  ${longitude}`;
+  console.log("state", send.length);
+  // const storagelocation = async () => {
+  //   // let theStartTime = JSON.stringify(send);
 
-  // const coordinates = async () => {
-  //   let location = await Location.getCurrentPositionAsync({});
-  //   setLatitude(location.coords.latitude);
-  //   setLongitude(location.coords.longitude);
+  //   // await AsyncStorage.setItem("location", theStartTime);
   // };
 
   useEffect(() => {
     setInterval(() => {
-      setStartTime(`${days[new Date().getDay()]}     ${
-        date < 10 ? "0" + date : date
-      }/${month < 10 ? "0" + month : month}/${new Date().getFullYear()}     ${
-        hours < 10 ? "0" + hours : hours
-      }:${minutes < 10 ? "0" + minutes : minutes}
-  `);
+      storagelocation();
+      // firstTime();
+    }, 10000);
 
-      // as();
-      setCartproduct([
-        ...cartproduct,
-        {
-          a: "startTime",
-          // b: textLocation,
-          // c: { map },
-        },
-      ]);
-    }, 3000);
-
-    // setInterval(() => {
-    //   async () => {
-    //     let location = await Location.getCurrentPositionAsync({});
-    //     setLatitude(location.coords.latitude);
-    //     setLongitude(location.coords.longitude);
-    //     setTextLocation(textlocationaa);
-    //   };
-    // }, 3000);
+    // setSend(theJobs);
+    // storagelocation();
   }, []);
 
-  // const aaa = async () => {
-  //   await setCartproduct([
-  //     ...cartproduct,
-  //     {
-  //       a: startTime,
-  //       b: textLocation,
-  //       // c: { map },
-  //     },
-  //   ]);
-  // };
-
-  // const as = () => {
+  // useEffect(() => {
   //   setInterval(() => {
-  //     setCartproduct([
-  //       ...cartproduct,
-  //       {
-  //         a: startTime,
-  //         b: textLocation,
-  //         // c: { map },
-  //       },
-  //     ]);
+  //     data();
   //   }, 3000);
-  // };
-  // {
-  //   setInterval(() => {
-  //     {
-  //       new Date();
-  //     }
-  //   }, 3000);
-  // }
-
-  // const mapview = (
-  //   <MapView
-  //     style={{ height: 150, width: 300 }}
-  //     initialRegion={{
-  //       // latitude: 31.8800332,
-  //       // longitude: 35.2398698,
-  //       latitude: latitude ? latitude : 0,
-  //       longitude: longitude ? longitude : 0,
-  //       latitudeDelta: 0.00292,
-  //       longitudeDelta: 0.00242,
-  //     }}
-  //   >
-  //     <Marker
-  //       coordinate={{
-  //         latitude: latitude ? latitude : 0,
-  //         longitude: longitude ? longitude : 0,
-  //       }}
-  //     />
-  //   </MapView>
-  // );
-
-  const onPress = () => {
-    setCartproduct([
-      ...cartproduct,
-      {
-        a: "jjjjjj",
-        //       `${days[new Date().getDay()]}     ${date < 10 ? "0" + date : date}/${
-        //         month < 10 ? "0" + month : month
-        //       }/${new Date().getFullYear()}     ${hours < 10 ? "0" + hours : hours}:${
-        //         minutes < 10 ? "0" + minutes : minutes
-        //       }
-        // `,
-      },
-    ]);
-    // setTextLocation(textlocation);
-    // setMap(mapview);
-  };
+  // }, []);
+  // console.log(send.length);
 
   return (
     <View style={{ marginTop: StatusBar.currentHieght || 30 }}>
       <HeadBar navigation={navigation} />
-      <View>
-        <Text>
-          {"\n"}
-          sssss
-          {startTime}
-          {textLocation}
-        </Text>
+      <ScrollView>
+        <View style={{ marginTop: 30, marginLeft: 15, marginBottom: 50 }}>
+          <TouchableOpacity onPress={storagelocation}>
+            <Text>get storage</Text>
+          </TouchableOpacity>
 
-        {/* {map} */}
-      </View>
-      <TouchableOpacity onPress={onPress}>
-        <Text>vvvvv</Text>
-      </TouchableOpacity>
-      {cartproduct.map((work, index) => (
-        <View key={index} style={{ height: 20, width: 300 }}>
-          <View>
-            <Text>{work.a}</Text>
-            {/* <Text>{work.b}</Text> */}
-          </View>
+          {send.map((work, index) => (
+            <Text key={index} style={{ fontSize: 15 }}>
+              {`time:  ${work.time}     Location:  ${work.Lat}  -  ${work.Lng}`}{" "}
+              {"\n"}
+            </Text>
+          ))}
         </View>
-      ))}
+      </ScrollView>
     </View>
   );
 };
 
 export default sendLocation;
+
+// import React, { useState, useEffect } from "react";
+// import { Platform, Text, View, StyleSheet } from "react-native";
+// import Constants from "expo-constants";
+// import * as Location from "expo-location";
+
+// export default function App() {
+//   const [location, setLocation] = useState(null);
+//   const [errorMsg, setErrorMsg] = useState(null);
+
+//   useEffect(() => {
+//     (async () => {
+//       if (Platform.OS === "android" && !Constants.isDevice) {
+//         setErrorMsg(
+//           "Oops, this will not work on Snack in an Android emulator. Try it on your device!"
+//         );
+//         return;
+//       }
+//       let { status } = await Location.requestPermissionsAsync();
+//       if (status !== "granted") {
+//         setErrorMsg("Permission to access location was denied");
+//         return;
+//       }
+
+//       let location = await Location.getCurrentPositionAsync({});
+//       setLocation(location);
+//     })();
+//   }, []);
+
+//   let text = "Waiting..";
+//   if (errorMsg) {
+//     text = errorMsg;
+//   } else if (location) {
+//     text = JSON.stringify(location);
+//   }
+
+//   return (
+//     <View style={styles.container}>
+//       <Text style={styles.paragraph}>{text}</Text>
+//     </View>
+//   );
+// }
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     alignItems: "center",
+//     justifyContent: "center",
+//     padding: 20,
+//   },
+//   paragraph: {
+//     fontSize: 18,
+//     textAlign: "center",
+//   },
+// });

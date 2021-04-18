@@ -17,6 +17,16 @@ const StartStyles = StyleSheet.create({
     backgroundColor: "orange",
     color: "#fff",
   },
+  Btnstart1: {
+    width: "70%",
+    borderRadius: 20,
+    height: 60,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 20,
+    backgroundColor: "orange",
+    color: "#fff",
+  },
 
   loginText: {
     fontSize: 30,

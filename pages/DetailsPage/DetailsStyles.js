@@ -26,6 +26,11 @@ const DetailsStyles = StyleSheet.create({
     borderWidth: 1.5,
     color: "#333333",
   },
+  Texttitle: {
+    marginTop: 10,
+    color: "#333333",
+    fontWeight: "bold",
+  },
 });
 
 export default DetailsStyles;

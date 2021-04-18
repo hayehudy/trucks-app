@@ -154,7 +154,7 @@ const LogInPage = ({ navigation }) => {
         {messageErr && (
           <View style={LogInStyles.message}>
             <Text style={LogInStyles.messagetext}>
-              The email or password{"\n"}is incorrect
+              The user or password{"\n"}is incorrect
             </Text>
             <TouchableOpacity
               style={LogInStyles.errBtn}

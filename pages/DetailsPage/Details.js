@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   ScrollView,
   Text,
@@ -38,7 +38,7 @@ const DetailsPage = ({ navigation }) => {
   };
 
   const onPress = async () => {
-    const theDetails = JSON.stringify(details);
+    const theDetails = await JSON.stringify(details);
     await AsyncStorage.setItem("details", theDetails);
     navigation.navigate("WorksPage");
   };
@@ -59,15 +59,7 @@ const DetailsPage = ({ navigation }) => {
           <ScrollView>
             <View style={{ alignItems: "center" }}>
               {/* <Text>DETAILS</Text> */}
-              <Text
-                style={{
-                  marginTop: 10,
-                  color: "#333333",
-                  fontWeight: "bold",
-                }}
-              >
-                Job Number
-              </Text>
+              <Text style={DetailsStyles.Texttitle}>Job Number</Text>
 
               <TextInput
                 style={DetailsStyles.TextInput1}
@@ -76,15 +68,7 @@ const DetailsPage = ({ navigation }) => {
                 selectTextOnFocus={false}
                 autoFocus={false}
               />
-              <Text
-                style={{
-                  marginTop: 10,
-                  color: "#333333",
-                  fontWeight: "bold",
-                }}
-              >
-                Truck Number
-              </Text>
+              <Text style={DetailsStyles.Texttitle}>Truck Number</Text>
 
               <TextInput
                 style={DetailsStyles.TextInput}
