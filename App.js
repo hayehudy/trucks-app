@@ -1,14 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  BackHandler,
-  Alert,
-  ToastAndroid,
-  Modal,
-} from "react-native";
+import { BackHandler, Alert } from "react-native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
 import LogInPage from "./pages/LoginPage/Login";
@@ -153,7 +144,7 @@ export default function App() {
             name="StartPage"
             component={StartPage}
             options={{
-              // gestureEnabled: false,
+              gestureEnabled: false,
 
               title: "Start",
               drawerIcon: ({ focused, size }) => (
@@ -167,7 +158,7 @@ export default function App() {
             name="DetailsPage"
             component={DetailsPage}
             options={{
-              // gestureEnabled: false,
+              gestureEnabled: false,
               headerLeft: null,
               gesturesEnabled: false,
               headerBackTitle: null,
@@ -185,7 +176,7 @@ export default function App() {
           name="WorksPage"
           component={WorksPage}
           options={{
-            // gestureEnabled: false,
+            gestureEnabled: false,
 
             title: "Works",
             drawerIcon: ({ focused, size }) => (
@@ -199,13 +190,6 @@ export default function App() {
           options={{
             gestureEnabled: false,
             drawerLabel: () => null,
-          }}
-        />
-        <Drawer.Screen
-          name="sendLocation"
-          component={sendLocation}
-          options={{
-            title: "send Location",
           }}
         />
       </Drawer.Navigator>

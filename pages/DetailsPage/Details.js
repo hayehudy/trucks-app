@@ -13,6 +13,8 @@ import HeadBar from "../../component/HeadBar";
 import { Picker } from "@react-native-picker/picker";
 import DetailsPicker from "../../component/DetailsPicker";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import axios from "axios";
+
 // import { useRoute } from "@react-navigation/native";
 
 const DetailsPage = ({ navigation }) => {
@@ -20,6 +22,7 @@ const DetailsPage = ({ navigation }) => {
   const [value, setValue] = useState();
   const [numjob, setNumjob] = useState("");
   const [details, setDetails] = useState({});
+
   const options = {
     TrucksTypes: ["Citroen", "Fiat", "Ferrari", "Dodge"],
     Contractors: ["A", "B", "C", "D"],

@@ -16,6 +16,7 @@
     "@react-navigation/native": "^5.9.2",
     "@react-navigation/stack": "^5.14.2",
     "@unimodules/core": "^7.0.0",
+    "axios": "^0.21.1",
     "expo": "~40.0.0",
     "expo-background-fetch": "~8.6.0",
     "expo-camera": "~9.1.0",

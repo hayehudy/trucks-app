@@ -98,15 +98,7 @@ const DaySummary = ({
           <Text style={DaySummaryStyles.headertext}>JOB DETAILS</Text>
           <View style={DaySummaryStyles.details}>
             <Text style={DaySummaryStyles.txttitle}>Job Number:</Text>
-            {/* <Text
-              style={
-                details.jobnumb
-                  ? DaySummaryStyles.txtdetails1
-                  : DaySummaryStyles.txtdetails
-              }
-            > */}
-            {/* {details.jobnumb ? details.jobnumb : "null"} */}
-            {/* </Text> */}
+            <Text style={DaySummaryStyles.txtdetails1}>{details.jobnumb}</Text>
             <Text style={DaySummaryStyles.txttitle}>Start:</Text>
             <Text style={DaySummaryStyles.txtdetails1}>{startTime}</Text>
             <Text style={DaySummaryStyles.txttitle}>End:</Text>

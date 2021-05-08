@@ -13,10 +13,9 @@ import * as TaskManager from "expo-task-manager";
 const StartPage = ({ navigation }) => {
   const [startTime, setStartTime] = useState("");
   const [latitude, setLatitude] = useState();
-  const [longitude, setLongitude] = useState("");
+  const [longitude, setLongitude] = useState();
   const [textLocation, setTextLocation] = useState("");
   const [map, setMap] = useState();
-  const [errorMsg, setErrorMsg] = useState(null);
 
   const month = new Date().getMonth() + 1;
   const date = new Date().getDate();
@@ -32,99 +31,73 @@ const StartPage = ({ navigation }) => {
 
   const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-  // useEffect(() => {
-  //   (async () => {
-  //     let location = await Location.getCurrentPositionAsync({});
-  //     setLatitude(location.coords.latitude);
-  //     setLongitude(location.coords.longitude);
-  // }, []);
+  useEffect(() => {
+    (async () => {
+      let location = await Location.getCurrentPositionAsync({});
+      setLatitude(location.coords.latitude);
+      setLongitude(location.coords.longitude);
+    })();
+  }, []);
 
-  // let textlocation = `latitude  ${latitude} longitude  ${longitude}`;
+  let textlocation = `latitude  ${latitude} longitude  ${longitude}`;
 
-  // let textlocation = "waiting...;"
-
-  // if (errorMsg) {
-  //   textlocation = errorMsg;
-  // } else if (location) {
-  //   textlocation = JSON.stringify(
-  //     // location
-  //     `קו רוחב  ${location.coords.latitude} קו אורך  ${location.coords.longitude}`
-  //   );
-  // }
-  // var latitude = location.coords.latitude;
-  // var longitude = location.coords.longitude;
-
-  // const mapview = (
-  //   <MapView
-  //     style={{ height: 150, width: 300 }}
-  //     initialRegion={{
-  //       // latitude: 31.8800332,
-  //       // longitude: 35.2398698,
-  //       latitude: latitude ? latitude : 0,
-  //       longitude: longitude ? longitude : 0,
-  //       latitudeDelta: 0.00292,
-  //       longitudeDelta: 0.00242,
-  //     }}
-  //   >
-  //     <Marker
-  //       coordinate={{
-  //         latitude: latitude ? latitude : 0,
-  //         longitude: longitude ? longitude : 0,
-  //       }}
-  //     />
-  //   </MapView>
-  // );
+  const mapview = (
+    <MapView
+      style={{ height: 350, width: 300 }}
+      language="en"
+      initialRegion={{
+        // latitude: 31.8800332,
+        // longitude: 35.2398698,
+        latitude: latitude ? latitude : 0,
+        longitude: longitude ? longitude : 0,
+        latitudeDelta: 0.00292,
+        longitudeDelta: 0.00242,
+      }}
+    >
+      <Marker
+        coordinate={{
+          latitude: latitude ? latitude : 0,
+          longitude: longitude ? longitude : 0,
+        }}
+      />
+    </MapView>
+  );
 
   // const sendLocation = ({ navigation }) => {
-  const [send, setSend] = useState([]);
+  // const [send, setSend] = useState([]);
 
-  const data = async () => {
-    let location = await Location.getCurrentPositionAsync({});
-    let Lat = location.coords.latitude;
-    let Lng = location.coords.longitude;
-    let time2 = `${new Date().getHours()}:${
-      new Date().getMinutes() < 10
-        ? "0" + new Date().getMinutes()
-        : new Date().getMinutes()
-    }:${new Date().getSeconds()}`;
-    setSend((send) => [...send, { time: time2, Lat: Lat, Lng: Lng }]);
+  // const data = async () => {
+  //   let location = await Location.getCurrentPositionAsync({});
+  //   let Lat = location.coords.latitude;
+  //   let Lng = location.coords.longitude;
+  //   let time2 = `${new Date().getHours()}:${
+  //     new Date().getMinutes() < 10
+  //       ? "0" + new Date().getMinutes()
+  //       : new Date().getMinutes()
+  //   }:${new Date().getSeconds()}`;
+  //   setSend((send) => [...send, { time: time2, Lat: Lat, Lng: Lng }]);
 
-    let theSsendLocation = JSON.stringify(send);
-    await AsyncStorage.setItem("location", theSsendLocation);
-  };
+  //   let theSsendLocation = JSON.stringify(send);
+  //   await AsyncStorage.setItem("location", theSsendLocation);
+  // };
 
-  const storagelocation = async () => {
-    const getstorage = await AsyncStorage.getItem("location");
-    const locationparse = await JSON.parse(getstorage);
-    console.log("getItem start", locationparse);
-  };
+  // const storagelocation = async () => {
+  //   const getstorage = await AsyncStorage.getItem("location");
+  //   const locationparse = await JSON.parse(getstorage);
+  //   console.log("getItem start", locationparse);
+  // };
 
-  useEffect(() => {
-    data();
-    storagelocation();
-  }, []);
+  // useEffect(() => {
+  //   data();
+  //   storagelocation();
+  // }, []);
 
-  // TaskManager.defineTask(data, () => {
-  //   try {
-  //     // let location = await Location.getCurrentPositionAsync({});
-
-  //     const receivedNewData = "location.coords.latitude";
-  //     return receivedNewData
-  //       ? BackgroundFetch.Result.NewData
-  //       : BackgroundFetch.Result.NoData;
-  //   } catch (error) {
-  //     return BackgroundFetch.Result.Failed;
-  //   }
-  // });
-  // console.log(BackgroundFetch.Result.NewData);
-
-  //   })();
-  useEffect(() => {
-    setInterval(() => {
-      data();
-      storagelocation();
-    }, 10000);
-  }, []);
+  // useEffect(() => {
+  //   setInterval(() => {
+  //     data();
+  //     storagelocation();
+  //   }, 10000);
+  // }, []);
   // console.log(send.length);
 
   const onPress = async () => {
@@ -155,7 +128,7 @@ const StartPage = ({ navigation }) => {
     await AsyncStorage.setItem("timenumjob", timenumjob);
     // setTextLocation(textlocation);
     // setMap(mapview);
-    // navigation.navigate("DetailsPage");
+    navigation.navigate("DetailsPage");
   };
 
   return (
@@ -165,7 +138,7 @@ const StartPage = ({ navigation }) => {
         <TouchableOpacity onPress={onPress} style={StartStyles.Btnstart}>
           <Text style={StartStyles.loginText}>Start Job</Text>
         </TouchableOpacity>
-        <TouchableOpacity
+        {/* <TouchableOpacity
           onPress={() => {
             AsyncStorage.removeItem("location");
           }}
@@ -182,7 +155,13 @@ const StartPage = ({ navigation }) => {
               </Text>
             ))}
           </View>
-        </ScrollView>
+        </ScrollView> */}
+        {/* <Text>
+          {"\n"}
+          {startTime}
+          {textLocation}
+        </Text> */}
+        {/* {map} */}
       </View>
     </View>
   );
